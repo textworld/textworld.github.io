@@ -5,15 +5,19 @@
   
 
   
-  <title>Hexo</title>
+  <title>Monit my tiny vps in aws lightsail | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://textworld.github.io/index.html">
+  <meta name="description" content="vps配置: 单核 512mb, 月付3.5刀,全天速度不错,不像linode晚上会爆炸,aws lightsail网页管控界面非常清爽.整体采用node_exporter+prometheus+grafana的方案进行监控. 其中node_exporter通过二进制直接运行,prometheus和grafana通过docker方式部署. node_exporter按照官方教程做即可1234wge">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Monit my tiny vps in aws lightsail">
+<meta property="og:url" content="http://textworld.github.io/2018/11/13/Monit-my-tiny-vps-in-aws-lightsail/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="vps配置: 单核 512mb, 月付3.5刀,全天速度不错,不像linode晚上会爆炸,aws lightsail网页管控界面非常清爽.整体采用node_exporter+prometheus+grafana的方案进行监控. 其中node_exporter通过二进制直接运行,prometheus和grafana通过docker方式部署. node_exporter按照官方教程做即可1234wge">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-13T11:18:13.696Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Monit my tiny vps in aws lightsail">
+<meta name="twitter:description" content="vps配置: 单核 512mb, 月付3.5刀,全天速度不错,不像linode晚上会爆炸,aws lightsail网页管控界面非常清爽.整体采用node_exporter+prometheus+grafana的方案进行监控. 其中node_exporter通过二进制直接运行,prometheus和grafana通过docker方式部署. node_exporter按照官方教程做即可1234wge">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,9 +64,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Monit-my-tiny-vps-in-aws-lightsail" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Monit-my-tiny-vps-in-aws-lightsail" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/13/Monit-my-tiny-vps-in-aws-lightsail/" class="article-date">
   <time datetime="2018-11-13T11:17:53.000Z" itemprop="datePublished">2018-11-13</time>
@@ -75,8 +77,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/13/Monit-my-tiny-vps-in-aws-lightsail/">Monit my tiny vps in aws lightsail</a>
+    <h1 class="article-title" itemprop="name">
+      Monit my tiny vps in aws lightsail
     </h1>
   
 
@@ -100,103 +102,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-kafka-retriable-exception" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/05/kafka-retriable-exception/" class="article-date">
-  <time datetime="2018-09-05T14:24:57.000Z" itemprop="datePublished">2018-09-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/05/kafka-retriable-exception/">Kafka retriable exception in consumers</a>
-    </h1>
+    <a href="/2018/09/05/kafka-retriable-exception/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Kafka retriable exception in consumers</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[o.a.k.c.c.i.ConsumerCoordinator] [Auto offset commit failed for group consumer-group: Commit offsets failed with retriable exception. You should retry committing offsets.] []</p>
-<p>Consumer gives this error in case if it catches an instance of RetriableException.<br>The reasons for it might be various:</p>
-<ul>
-<li>if coordinator is still loading the group metadata</li>
-<li>if the group metadata topic has not been created yet</li>
-<li>if network or disk corruption happens, or miscellaneous disk-related or network-related IOException occurred when handling a request</li>
-<li>if server disconnected before a request could be completed</li>
-<li>if the client’s metadata is out of date</li>
-<li>if there is no currently available leader for the given partition</li>
-<li>if no brokers were available to complete a request</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2018/09/05/kafka-retriable-exception/" data-id="cjofn88xk000232684uzcj19p" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/14/hello-world/" class="article-date">
-  <time datetime="2018-06-14T05:29:20.714Z" itemprop="datePublished">2018-06-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/14/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2018/06/14/hello-world/" data-id="cjofn88xi0001326819kul4jy" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
