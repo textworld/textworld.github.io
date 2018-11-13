@@ -5,15 +5,19 @@
   
 
   
-  <title>Archives | Hexo</title>
+  <title>Kafka retriable exception in consumers | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://textworld.github.io/archives/index.html">
+  <meta name="description" content="[o.a.k.c.c.i.ConsumerCoordinator] [Auto offset commit failed for group consumer-group: Commit offsets failed with retriable exception. You should retry committing offsets.] [] Consumer gives this erro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kafka retriable exception in consumers">
+<meta property="og:url" content="http://textworld.github.io/2018/09/05/kafka-retriable-exception/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[o.a.k.c.c.i.ConsumerCoordinator] [Auto offset commit failed for group consumer-group: Commit offsets failed with retriable exception. You should retry committing offsets.] [] Consumer gives this erro">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-05T03:57:05.666Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Kafka retriable exception in consumers">
+<meta name="twitter:description" content="[o.a.k.c.c.i.ConsumerCoordinator] [Auto offset commit failed for group consumer-group: Commit offsets failed with retriable exception. You should retry committing offsets.] [] Consumer gives this erro">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,72 +64,71 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/11/12/prometheus/" class="archive-article-date">
-  <time datetime="2018-11-12T10:53:18.011Z" itemprop="datePublished">Nov 12</time>
+        <section id="main"><article id="post-kafka-retriable-exception" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/05/kafka-retriable-exception/" class="article-date">
+  <time datetime="2018-09-05T14:24:57.000Z" itemprop="datePublished">2018-09-05</time>
 </a>
-      
-    </header>
+    
   </div>
-</article>
-  
+  <div class="article-inner">
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/05/kafka-retriable-exception/" class="archive-article-date">
-  <time datetime="2018-09-05T14:24:57.000Z" itemprop="datePublished">Sep 5</time>
-</a>
-      
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/05/kafka-retriable-exception/">Kafka retriable exception in consumers</a>
+    <h1 class="article-title" itemprop="name">
+      Kafka retriable exception in consumers
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/14/hello-world/" class="archive-article-date">
-  <time datetime="2018-06-14T05:29:20.714Z" itemprop="datePublished">Jun 14</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/14/hello-world/">Hello World</a>
-    </h1>
-  
+        <p>[o.a.k.c.c.i.ConsumerCoordinator] [Auto offset commit failed for group consumer-group: Commit offsets failed with retriable exception. You should retry committing offsets.] []</p>
+<p>Consumer gives this error in case if it catches an instance of RetriableException.<br>The reasons for it might be various:</p>
+<ul>
+<li>if coordinator is still loading the group metadata</li>
+<li>if the group metadata topic has not been created yet</li>
+<li>if network or disk corruption happens, or miscellaneous disk-related or network-related IOException occurred when handling a request</li>
+<li>if server disconnected before a request could be completed</li>
+<li>if the client’s metadata is out of date</li>
+<li>if there is no currently available leader for the given partition</li>
+<li>if no brokers were available to complete a request</li>
+</ul>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://textworld.github.io/2018/09/05/kafka-retriable-exception/" data-id="cjofmeeba0003lg68mg85dq84" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/11/12/prometheus/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/06/14/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         

@@ -62,10 +62,36 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-One-step-for-my-site" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-prometheus" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/07/15/One-step-for-my-site/" class="article-date">
-  <time datetime="2018-07-15T14:24:57.000Z" itemprop="datePublished">2018-07-15</time>
+    <a href="/2018/11/12/prometheus/" class="article-date">
+  <time datetime="2018-11-12T10:53:18.011Z" itemprop="datePublished">2018-11-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="promethues-docker"><a href="#promethues-docker" class="headerlink" title="promethues docker"></a>promethues docker</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker volume create prometheus-data</span><br><span class="line">docker run \</span><br><span class="line">  -d \</span><br><span class="line">  -p 9090:9090 \</span><br><span class="line">  --name=prometheus \</span><br><span class="line">  -v prometheus-data:/prometheus \</span><br><span class="line">  -v /etc/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml \</span><br><span class="line">  prom/prometheus:v2.5.0 \</span><br><span class="line">  --config.file=/etc/prometheus/prometheus.yml</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://textworld.github.io/2018/11/12/prometheus/" data-id="cjofmeeb60001lg68la0yfacm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-kafka-retriable-exception" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/05/kafka-retriable-exception/" class="article-date">
+  <time datetime="2018-09-05T14:24:57.000Z" itemprop="datePublished">2018-09-05</time>
 </a>
     
   </div>
@@ -76,7 +102,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/15/One-step-for-my-site/">One step for my site</a>
+      <a class="article-title" href="/2018/09/05/kafka-retriable-exception/">Kafka retriable exception in consumers</a>
     </h1>
   
 
@@ -84,12 +110,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>I built my web application today. I finally did it. The most important thing is not how good my application is, but that I insist.</p>
+        <p>[o.a.k.c.c.i.ConsumerCoordinator] [Auto offset commit failed for group consumer-group: Commit offsets failed with retriable exception. You should retry committing offsets.] []</p>
+<p>Consumer gives this error in case if it catches an instance of RetriableException.<br>The reasons for it might be various:</p>
+<ul>
+<li>if coordinator is still loading the group metadata</li>
+<li>if the group metadata topic has not been created yet</li>
+<li>if network or disk corruption happens, or miscellaneous disk-related or network-related IOException occurred when handling a request</li>
+<li>if server disconnected before a request could be completed</li>
+<li>if the client’s metadata is out of date</li>
+<li>if there is no currently available leader for the given partition</li>
+<li>if no brokers were available to complete a request</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2018/07/15/One-step-for-my-site/" data-id="cjjmxr6s80000df68hr7t55pc" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2018/09/05/kafka-retriable-exception/" data-id="cjofmeeba0003lg68mg85dq84" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2018/06/14/hello-world/" data-id="cjjmxr6sf0001df68z33bibyh" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2018/06/14/hello-world/" data-id="cjofmeeb20000lg68tvxq0nqf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -162,7 +198,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
     </div>
   </div>
 
@@ -175,7 +211,11 @@
       <ul>
         
           <li>
-            <a href="/2018/07/15/One-step-for-my-site/">One step for my site</a>
+            <a href="/2018/11/12/prometheus/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/05/kafka-retriable-exception/">Kafka retriable exception in consumers</a>
           </li>
         
           <li>
