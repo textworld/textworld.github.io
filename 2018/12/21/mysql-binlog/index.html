@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>binlog知识 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="查看 binlog格式show variables like ‘binlog_format’ binlog 是否开启show variables like ‘log_bin’; 获取binlog文件列表show binary logs 查看当前正在写入的binlog文件show master status 查看master上的binlogshow master logs 只查看第一个binlog文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="binlog知识">
+<meta property="og:url" content="http://textworld.github.io/2018/12/21/mysql-binlog/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="查看 binlog格式show variables like ‘binlog_format’ binlog 是否开启show variables like ‘log_bin’; 获取binlog文件列表show binary logs 查看当前正在写入的binlog文件show master status 查看master上的binlogshow master logs 只查看第一个binlog文">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-01T15:39:38.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="binlog知识">
+<meta name="twitter:description" content="查看 binlog格式show variables like ‘binlog_format’ binlog 是否开启show variables like ‘log_bin’; 获取binlog文件列表show binary logs 查看当前正在写入的binlog文件show master status 查看master上的binlogshow master logs 只查看第一个binlog文">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://textworld.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mysql-binlog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/21/mysql-binlog/" class="article-date">
+  <time datetime="2018-12-21T03:47:14.807Z" itemprop="datePublished">2018-12-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      binlog知识
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="查看-binlog格式"><a href="#查看-binlog格式" class="headerlink" title="查看 binlog格式"></a>查看 binlog格式</h2><p>show variables like ‘binlog_format’</p>
+<h2 id="binlog-是否开启"><a href="#binlog-是否开启" class="headerlink" title="binlog 是否开启"></a>binlog 是否开启</h2><p>show variables like ‘log_bin’;</p>
+<h2 id="获取binlog文件列表"><a href="#获取binlog文件列表" class="headerlink" title="获取binlog文件列表"></a>获取binlog文件列表</h2><p>show binary logs</p>
+<h2 id="查看当前正在写入的binlog文件"><a href="#查看当前正在写入的binlog文件" class="headerlink" title="查看当前正在写入的binlog文件"></a>查看当前正在写入的binlog文件</h2><p>show master status</p>
+<h2 id="查看master上的binlog"><a href="#查看master上的binlog" class="headerlink" title="查看master上的binlog"></a>查看master上的binlog</h2><p>show master logs</p>
+<h2 id="只查看第一个binlog文件的内容"><a href="#只查看第一个binlog文件的内容" class="headerlink" title="只查看第一个binlog文件的内容"></a>只查看第一个binlog文件的内容</h2><p>show binlog events</p>
+<h2 id="查看指定binlog文件的内容"><a href="#查看指定binlog文件的内容" class="headerlink" title="查看指定binlog文件的内容"></a>查看指定binlog文件的内容</h2><p>show binlog events in ‘mysql-bin.000002’<br>mysql&gt; show binlog events in “mysql-bin.000002”;<br>+——————+—–+————-+———–+————-+———————————————+<br>| Log_name         | Pos | Event_type  | Server_id | End_log_pos | Info                                        |<br>+——————+—–+————-+———–+————-+———————————————+<br>| mysql-bin.000002 |   4 | Format_desc |        11 |         120 | Server ver: 5.6.26-debug-log, Binlog ver: 4 |<br>| mysql-bin.000002 | 120 | Query       |        11 |         191 | BEGIN                                       |<br>| mysql-bin.000002 | 191 | Table_map   |        11 |         236 | table_id: 70 (yzs.t1)                       |<br>| mysql-bin.000002 | 236 | Write_rows  |        11 |         280 | table_id: 70 flags: STMT_END_F              |<br>| mysql-bin.000002 | 280 | Xid         |        11 |         311 | COMMIT /<em> xid=9 </em>/                          |<br>+——————+—–+————-+———–+————-+———————————————+<br>5 rows in set (0.00 sec)  </p>
+<h2 id="TABLE-MAP-EVENT"><a href="#TABLE-MAP-EVENT" class="headerlink" title="TABLE_MAP_EVENT"></a>TABLE_MAP_EVENT</h2><h2 id="ROWS-EVENT"><a href="#ROWS-EVENT" class="headerlink" title="ROWS_EVENT"></a>ROWS_EVENT</h2><h2 id="ROWS-QUERY-EVENT"><a href="#ROWS-QUERY-EVENT" class="headerlink" title="ROWS_QUERY_EVENT"></a>ROWS_QUERY_EVENT</h2><h2 id="执行insert语句产生的event事件"><a href="#执行insert语句产生的event事件" class="headerlink" title="执行insert语句产生的event事件"></a>执行insert语句产生的event事件</h2><p>执行语句INSERT INTO trow VALUES(1, NULL), (2, ‘a’)，这个语句会产生一个query event，一个table_map event、一个write_rows event以及一个xid event。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://textworld.github.io/2018/12/21/mysql-binlog/" data-id="cjqdxc6qn0004tx68pre9rknf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/12/21/record/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          杂乱信息记录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/13/Monit-my-tiny-vps-in-aws-lightsail/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Monit my tiny vps in aws lightsail</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/21/record/">杂乱信息记录</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/21/mysql-binlog/">binlog知识</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/13/Monit-my-tiny-vps-in-aws-lightsail/">Monit my tiny vps in aws lightsail</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/05/kafka-retriable-exception/">Kafka retriable exception in consumers</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/14/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 textworld<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

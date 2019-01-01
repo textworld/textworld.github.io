@@ -62,6 +62,104 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-record" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/21/record/" class="article-date">
+  <time datetime="2018-12-21T08:29:47.564Z" itemprop="datePublished">2018-12-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/21/record/">杂乱信息记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>建议使用 git merge –no-ff，这样无论如何都会产生一个新的 merge commit。然后你 git show <merge-commit-sha1> 就可以看到这次 merge 的所有改动。  </merge-commit-sha1></p>
+<h2 id="linux-命令"><a href="#linux-命令" class="headerlink" title="linux 命令"></a>linux 命令</h2><p>netstat -anp | grep 端口号<br>netsta相关参数说明</p>
+<ul>
+<li>-a (all)显示所有选项，默认不显示LISTEN相关</li>
+<li>-t (tcp)仅显示tcp相关选项</li>
+<li>-u (udp)仅显示udp相关选项</li>
+<li>-n 拒绝显示别名，能显示数字的全部转化成数字。</li>
+<li>-l 仅列出有在 Listen (监听) 的服務状态</li>
+<li>-p 显示建立相关链接的程序名</li>
+<li>-r 显示路由信息，路由表</li>
+<li>-e 显示扩展信息，例如uid等</li>
+<li>-s 按各个协议进行统计</li>
+<li>-c 每隔一个固定时间，执行该netstat命令</li>
+</ul>
+<h2 id="docker命令"><a href="#docker命令" class="headerlink" title="docker命令"></a>docker命令</h2><p>docker run -d -p 3306:3306 -v ~/bitbucket.org/server_config/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf ~/mysql_data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root#%mysql –name mysql_binlog mysql</p>
+<h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><h3 id="jvm相关"><a href="#jvm相关" class="headerlink" title="jvm相关"></a>jvm相关</h3><p>整个堆大小=年轻代大小 + 年老代大小 + 持久代大小.</p>
+<p>-Xms 初始堆大小<br>-Xmx 最大堆大小<br>-Xmn 年轻代大小(1.4or lator)</p>
+<h3 id="四种引用"><a href="#四种引用" class="headerlink" title="四种引用"></a>四种引用</h3><p>强引用<br>软引用<br>弱引用<br>虚引用</p>
+<h2 id="go"><a href="#go" class="headerlink" title="go"></a>go</h2><h3 id="slice-排序"><a href="#slice-排序" class="headerlink" title="slice 排序"></a>slice 排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;sort&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    a := []int&#123;3, 5, 4, -1, 9, 11, -14&#125;</span><br><span class="line">    sort.Ints(a)</span><br><span class="line">    fmt.Println(a)</span><br><span class="line">    </span><br><span class="line">    ss := []string&#123;&quot;surface&quot;, &quot;ipad&quot;, &quot;mac pro&quot;, &quot;mac air&quot;, &quot;think pad&quot;, &quot;idea pad&quot;&#125;</span><br><span class="line">    sort.Strings(ss)</span><br><span class="line">    fmt.Println(ss)</span><br><span class="line">    sort.Sort(sort.Reverse(sort.StringSlice(ss)))</span><br><span class="line">    fmt.Printf(&quot;After reverse: %v\n&quot;, ss)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://textworld.github.io/2018/12/21/record/" data-id="cjqdxc6qm0003tx68zw818088" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mysql-binlog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/21/mysql-binlog/" class="article-date">
+  <time datetime="2018-12-21T03:47:14.807Z" itemprop="datePublished">2018-12-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/21/mysql-binlog/">binlog知识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="查看-binlog格式"><a href="#查看-binlog格式" class="headerlink" title="查看 binlog格式"></a>查看 binlog格式</h2><p>show variables like ‘binlog_format’</p>
+<h2 id="binlog-是否开启"><a href="#binlog-是否开启" class="headerlink" title="binlog 是否开启"></a>binlog 是否开启</h2><p>show variables like ‘log_bin’;</p>
+<h2 id="获取binlog文件列表"><a href="#获取binlog文件列表" class="headerlink" title="获取binlog文件列表"></a>获取binlog文件列表</h2><p>show binary logs</p>
+<h2 id="查看当前正在写入的binlog文件"><a href="#查看当前正在写入的binlog文件" class="headerlink" title="查看当前正在写入的binlog文件"></a>查看当前正在写入的binlog文件</h2><p>show master status</p>
+<h2 id="查看master上的binlog"><a href="#查看master上的binlog" class="headerlink" title="查看master上的binlog"></a>查看master上的binlog</h2><p>show master logs</p>
+<h2 id="只查看第一个binlog文件的内容"><a href="#只查看第一个binlog文件的内容" class="headerlink" title="只查看第一个binlog文件的内容"></a>只查看第一个binlog文件的内容</h2><p>show binlog events</p>
+<h2 id="查看指定binlog文件的内容"><a href="#查看指定binlog文件的内容" class="headerlink" title="查看指定binlog文件的内容"></a>查看指定binlog文件的内容</h2><p>show binlog events in ‘mysql-bin.000002’<br>mysql&gt; show binlog events in “mysql-bin.000002”;<br>+——————+—–+————-+———–+————-+———————————————+<br>| Log_name         | Pos | Event_type  | Server_id | End_log_pos | Info                                        |<br>+——————+—–+————-+———–+————-+———————————————+<br>| mysql-bin.000002 |   4 | Format_desc |        11 |         120 | Server ver: 5.6.26-debug-log, Binlog ver: 4 |<br>| mysql-bin.000002 | 120 | Query       |        11 |         191 | BEGIN                                       |<br>| mysql-bin.000002 | 191 | Table_map   |        11 |         236 | table_id: 70 (yzs.t1)                       |<br>| mysql-bin.000002 | 236 | Write_rows  |        11 |         280 | table_id: 70 flags: STMT_END_F              |<br>| mysql-bin.000002 | 280 | Xid         |        11 |         311 | COMMIT /<em> xid=9 </em>/                          |<br>+——————+—–+————-+———–+————-+———————————————+<br>5 rows in set (0.00 sec)  </p>
+<h2 id="TABLE-MAP-EVENT"><a href="#TABLE-MAP-EVENT" class="headerlink" title="TABLE_MAP_EVENT"></a>TABLE_MAP_EVENT</h2><h2 id="ROWS-EVENT"><a href="#ROWS-EVENT" class="headerlink" title="ROWS_EVENT"></a>ROWS_EVENT</h2><h2 id="ROWS-QUERY-EVENT"><a href="#ROWS-QUERY-EVENT" class="headerlink" title="ROWS_QUERY_EVENT"></a>ROWS_QUERY_EVENT</h2><h2 id="执行insert语句产生的event事件"><a href="#执行insert语句产生的event事件" class="headerlink" title="执行insert语句产生的event事件"></a>执行insert语句产生的event事件</h2><p>执行语句INSERT INTO trow VALUES(1, NULL), (2, ‘a’)，这个语句会产生一个query event，一个table_map event、一个write_rows event以及一个xid event。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://textworld.github.io/2018/12/21/mysql-binlog/" data-id="cjqdxc6qn0004tx68pre9rknf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Monit-my-tiny-vps-in-aws-lightsail" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/13/Monit-my-tiny-vps-in-aws-lightsail/" class="article-date">
@@ -94,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2018/11/13/Monit-my-tiny-vps-in-aws-lightsail/" data-id="cjofn88xe00003268m69nl9ir" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2018/11/13/Monit-my-tiny-vps-in-aws-lightsail/" data-id="cjqdxc6qf0000tx68x4o6k1c4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2018/09/05/kafka-retriable-exception/" data-id="cjofn88xk000232684uzcj19p" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2018/09/05/kafka-retriable-exception/" data-id="cjqdxc6ql0002tx689bjon9n0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2018/06/14/hello-world/" data-id="cjofn88xi0001326819kul4jy" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2018/06/14/hello-world/" data-id="cjqdxc6qi0001tx68a9y9uvbq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -214,7 +312,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
     </div>
   </div>
 
@@ -225,6 +323,14 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/12/21/record/">杂乱信息记录</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/21/mysql-binlog/">binlog知识</a>
+          </li>
         
           <li>
             <a href="/2018/11/13/Monit-my-tiny-vps-in-aws-lightsail/">Monit my tiny vps in aws lightsail</a>
@@ -250,7 +356,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 textworld<br>
+      &copy; 2019 textworld<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
