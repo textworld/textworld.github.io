@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="查看 binlog格式show variables like ‘binlog_format’ binlog 是否开启show variables like ‘log_bin’; 获取binlog文件列表show binary logs 查看当前正在写入的binlog文件show master status 查看master上的binlogshow master logs 只查看第一个binlog文">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-01T15:39:38.917Z">
+<meta property="og:updated_time" content="2019-01-03T03:08:33.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="binlog知识">
 <meta name="twitter:description" content="查看 binlog格式show variables like ‘binlog_format’ binlog 是否开启show variables like ‘log_bin’; 获取binlog文件列表show binary logs 查看当前正在写入的binlog文件show master status 查看master上的binlogshow master logs 只查看第一个binlog文">
@@ -94,11 +94,35 @@
 <h2 id="只查看第一个binlog文件的内容"><a href="#只查看第一个binlog文件的内容" class="headerlink" title="只查看第一个binlog文件的内容"></a>只查看第一个binlog文件的内容</h2><p>show binlog events</p>
 <h2 id="查看指定binlog文件的内容"><a href="#查看指定binlog文件的内容" class="headerlink" title="查看指定binlog文件的内容"></a>查看指定binlog文件的内容</h2><p>show binlog events in ‘mysql-bin.000002’<br>mysql&gt; show binlog events in “mysql-bin.000002”;<br>+——————+—–+————-+———–+————-+———————————————+<br>| Log_name         | Pos | Event_type  | Server_id | End_log_pos | Info                                        |<br>+——————+—–+————-+———–+————-+———————————————+<br>| mysql-bin.000002 |   4 | Format_desc |        11 |         120 | Server ver: 5.6.26-debug-log, Binlog ver: 4 |<br>| mysql-bin.000002 | 120 | Query       |        11 |         191 | BEGIN                                       |<br>| mysql-bin.000002 | 191 | Table_map   |        11 |         236 | table_id: 70 (yzs.t1)                       |<br>| mysql-bin.000002 | 236 | Write_rows  |        11 |         280 | table_id: 70 flags: STMT_END_F              |<br>| mysql-bin.000002 | 280 | Xid         |        11 |         311 | COMMIT /<em> xid=9 </em>/                          |<br>+——————+—–+————-+———–+————-+———————————————+<br>5 rows in set (0.00 sec)  </p>
 <h2 id="TABLE-MAP-EVENT"><a href="#TABLE-MAP-EVENT" class="headerlink" title="TABLE_MAP_EVENT"></a>TABLE_MAP_EVENT</h2><h2 id="ROWS-EVENT"><a href="#ROWS-EVENT" class="headerlink" title="ROWS_EVENT"></a>ROWS_EVENT</h2><h2 id="ROWS-QUERY-EVENT"><a href="#ROWS-QUERY-EVENT" class="headerlink" title="ROWS_QUERY_EVENT"></a>ROWS_QUERY_EVENT</h2><h2 id="执行insert语句产生的event事件"><a href="#执行insert语句产生的event事件" class="headerlink" title="执行insert语句产生的event事件"></a>执行insert语句产生的event事件</h2><p>执行语句INSERT INTO trow VALUES(1, NULL), (2, ‘a’)，这个语句会产生一个query event，一个table_map event、一个write_rows event以及一个xid event。</p>
-
+<h2 id="mysql-mysql数据迁移的测试标准"><a href="#mysql-mysql数据迁移的测试标准" class="headerlink" title="mysql-mysql数据迁移的测试标准"></a>mysql-mysql数据迁移的测试标准</h2><h3 id="最基本"><a href="#最基本" class="headerlink" title="最基本"></a>最基本</h3><ol>
+<li>源数据表插入数据,            目的数据表也能插入数据</li>
+<li>源数据表修改对应的数据,       目的数据表也能相应修改对应行的数据</li>
+<li>源数据表删除对应的数据,       目的数据表也能删除对应行的数据</li>
+</ol>
+<h3 id="三种模式"><a href="#三种模式" class="headerlink" title="三种模式"></a>三种模式</h3><ol>
+<li>全量</li>
+<li>增量<ul>
+<li>insert</li>
+<li>delete</li>
+<li>update</li>
+</ul>
+</li>
+<li>全量+增量</li>
+</ol>
+<h3 id="带where条件的sql语句执行"><a href="#带where条件的sql语句执行" class="headerlink" title="带where条件的sql语句执行"></a>带where条件的sql语句执行</h3><ol>
+<li>从源表中取数据时带有where条件</li>
+<li>通过 由于字段映射,从源表中执行的sql带有 select username as name这样的语句,字段的别名就是迁移到目标表的别名 <ul>
+<li>insert 通过</li>
+<li>delete 通过</li>
+<li>update 通过</li>
+</ul>
+</li>
+</ol>
+<h3 id="无主键模式"><a href="#无主键模式" class="headerlink" title="无主键模式"></a>无主键模式</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2018/12/21/mysql-binlog/" data-id="cjqdxc6qn0004tx68pre9rknf" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2018/12/21/mysql-binlog/" data-id="cjqgjh1wq0003jd68ahvzzdw9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -143,7 +167,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
     </div>
   </div>
 
@@ -154,6 +178,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/01/02/my-targets/">my-targets</a>
+          </li>
         
           <li>
             <a href="/2018/12/21/record/">杂乱信息记录</a>
@@ -169,10 +197,6 @@
         
           <li>
             <a href="/2018/09/05/kafka-retriable-exception/">Kafka retriable exception in consumers</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/14/hello-world/">Hello World</a>
           </li>
         
       </ul>

@@ -7,17 +7,17 @@
   
   <title>杂乱信息记录 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="git建议使用 git merge –no-ff，这样无论如何都会产生一个新的 merge commit。然后你 git show  就可以看到这次 merge 的所有改动。   linux 命令netstat -anp | grep 端口号netsta相关参数说明  -a (all)显示所有选项，默认不显示LISTEN相关 -t (tcp)仅显示tcp相关选项 -u (udp)仅显示udp相关选">
+  <meta name="description" content="git建议使用 git merge –no-ff，这样无论如何都会产生一个新的 merge commit。然后你 git show  就可以看到这次 merge 的所有改动。   linux 知识 只要是文件的owner,就可以执行chmod来改变文件的权限 概念: effective uid and effective gid, 当没有设置SUID时,euid = owner uid, egid">
 <meta property="og:type" content="article">
 <meta property="og:title" content="杂乱信息记录">
 <meta property="og:url" content="http://textworld.github.io/2018/12/21/record/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="git建议使用 git merge –no-ff，这样无论如何都会产生一个新的 merge commit。然后你 git show  就可以看到这次 merge 的所有改动。   linux 命令netstat -anp | grep 端口号netsta相关参数说明  -a (all)显示所有选项，默认不显示LISTEN相关 -t (tcp)仅显示tcp相关选项 -u (udp)仅显示udp相关选">
+<meta property="og:description" content="git建议使用 git merge –no-ff，这样无论如何都会产生一个新的 merge commit。然后你 git show  就可以看到这次 merge 的所有改动。   linux 知识 只要是文件的owner,就可以执行chmod来改变文件的权限 概念: effective uid and effective gid, 当没有设置SUID时,euid = owner uid, egid">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-01T15:41:59.251Z">
+<meta property="og:updated_time" content="2019-01-03T11:29:02.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="杂乱信息记录">
-<meta name="twitter:description" content="git建议使用 git merge –no-ff，这样无论如何都会产生一个新的 merge commit。然后你 git show  就可以看到这次 merge 的所有改动。   linux 命令netstat -anp | grep 端口号netsta相关参数说明  -a (all)显示所有选项，默认不显示LISTEN相关 -t (tcp)仅显示tcp相关选项 -u (udp)仅显示udp相关选">
+<meta name="twitter:description" content="git建议使用 git merge –no-ff，这样无论如何都会产生一个新的 merge commit。然后你 git show  就可以看到这次 merge 的所有改动。   linux 知识 只要是文件的owner,就可以执行chmod来改变文件的权限 概念: effective uid and effective gid, 当没有设置SUID时,euid = owner uid, egid">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -87,6 +87,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>建议使用 git merge –no-ff，这样无论如何都会产生一个新的 merge commit。然后你 git show <merge-commit-sha1> 就可以看到这次 merge 的所有改动。  </merge-commit-sha1></p>
+<h2 id="linux-知识"><a href="#linux-知识" class="headerlink" title="linux 知识"></a>linux 知识</h2><ul>
+<li>只要是文件的owner,就可以执行chmod来改变文件的权限</li>
+<li>概念: effective uid and effective gid, 当没有设置SUID时,euid = owner uid, egid = owner gid;当设置了SUID的时候, euid和gid就变成了执行者的uid以及gid.  </li>
+<li>SUID权限仅对二进制可执行文件有效. 普通用户用passwd修改自己的命令，实际上最终更改的是/etc/passwd文件. 此文件时用户管理配置文件,只有root权限才能更改.既然是root用户才拥有此权限，为什么我们可以通过passwd命令来修改密码呢，那这就要归功于passwd设置了suid权限位了。此时普通用户通过执行passwd命令，临时拥有root权限，间接的修改/etc/passwd，以达到修改自己密码的权限。</li>
+<li>脚本文件无法通过SUID进行提权</li>
+<li>在计算领域中，Shebang（也称为 Hashbang ）是一个由井号和叹号构成的字符序列 #! ，其出现在文本文件的第一行的前两个字符。 在文件中存在 Shebang 的情况下，类 Unix 操作系统的程序加载器会分析 Shebang 后的内容，将这些内容作为解释器指令，并调用该指令，并将载有 Shebang 的文件路径作为该解释器的参数。</li>
+</ul>
 <h2 id="linux-命令"><a href="#linux-命令" class="headerlink" title="linux 命令"></a>linux 命令</h2><p>netstat -anp | grep 端口号<br>netsta相关参数说明</p>
 <ul>
 <li>-a (all)显示所有选项，默认不显示LISTEN相关</li>
@@ -108,7 +115,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2018/12/21/record/" data-id="cjqdxc6qm0003tx68zw818088" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2018/12/21/record/" data-id="cjqgjh1wo0002jd68mfpdu673" class="article-share-link">Share</a>
       
       
     </footer>
@@ -116,6 +123,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/01/02/my-targets/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          my-targets
+        
+      </div>
+    </a>
   
   
     <a href="/2018/12/21/mysql-binlog/" id="article-nav-older" class="article-nav-link-wrap">
@@ -144,7 +160,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li></ul>
     </div>
   </div>
 
@@ -155,6 +171,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/01/02/my-targets/">my-targets</a>
+          </li>
         
           <li>
             <a href="/2018/12/21/record/">杂乱信息记录</a>
@@ -170,10 +190,6 @@
         
           <li>
             <a href="/2018/09/05/kafka-retriable-exception/">Kafka retriable exception in consumers</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/14/hello-world/">Hello World</a>
           </li>
         
       </ul>
