@@ -88,6 +88,7 @@
 <li>配置自己的邮件服务器,并写文记录</li>
 <li>spring bean注册处理过程,自己写一个demo</li>
 <li>spring autowired注册处理过程</li>
+<li>vue数据绑定核心原理理解 <a href="https://github.com/DDFE/DDFE-blog/issues/7" target="_blank" rel="noopener">https://github.com/DDFE/DDFE-blog/issues/7</a></li>
 </ol>
 
       
@@ -132,6 +133,7 @@
 <li>SUID权限仅对二进制可执行文件有效. 普通用户用passwd修改自己的命令，实际上最终更改的是/etc/passwd文件. 此文件时用户管理配置文件,只有root权限才能更改.既然是root用户才拥有此权限，为什么我们可以通过passwd命令来修改密码呢，那这就要归功于passwd设置了suid权限位了。此时普通用户通过执行passwd命令，临时拥有root权限，间接的修改/etc/passwd，以达到修改自己密码的权限。</li>
 <li>脚本文件无法通过SUID进行提权</li>
 <li>在计算领域中，Shebang（也称为 Hashbang ）是一个由井号和叹号构成的字符序列 #! ，其出现在文本文件的第一行的前两个字符。 在文件中存在 Shebang 的情况下，类 Unix 操作系统的程序加载器会分析 Shebang 后的内容，将这些内容作为解释器指令，并调用该指令，并将载有 Shebang 的文件路径作为该解释器的参数。</li>
+<li>进程虚拟内存:首先需要强调的是虚拟内存不同于物理内存，虽然两者都包含内存字眼但是它们属于两个不同层面的概念。进程占用虚拟内存空间大并非意味着程序的物理内存也一定占用很大。虚拟内存是操作系统内核为了对进程地址空间进行管理（process address space management）而精心设计的一个逻辑意义上的内存空间概念。我们程序中的指针其实都是这个虚拟内存空间中的地址。</li>
 </ul>
 <h2 id="linux-命令"><a href="#linux-命令" class="headerlink" title="linux 命令"></a>linux 命令</h2><p>netstat -anp | grep 端口号<br>netsta相关参数说明</p>
 <ul>
@@ -147,10 +149,14 @@
 <li>-c 每隔一个固定时间，执行该netstat命令</li>
 </ul>
 <h2 id="docker命令"><a href="#docker命令" class="headerlink" title="docker命令"></a>docker命令</h2><p>docker run -d -p 3306:3306 -v ~/bitbucket.org/server_config/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf ~/mysql_data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root#%mysql –name mysql_binlog mysql</p>
-<h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><h3 id="jvm相关"><a href="#jvm相关" class="headerlink" title="jvm相关"></a>jvm相关</h3><p>整个堆大小=年轻代大小 + 年老代大小 + 持久代大小.</p>
+<h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><h3 id="日期相关"><a href="#日期相关" class="headerlink" title="日期相关"></a>日期相关</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.of(&quot;+08:00&quot;));</span><br></pre></td></tr></table></figure>
+<p>获取一天开始和结尾<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int offsetSeconds = time.getOffset().getTotalSeconds();</span><br><span class="line">long timestamp = time.toInstant().getEpochSecond() + offsetSeconds;</span><br><span class="line"></span><br><span class="line">long start = timestamp / 86400L * 86400L - offsetSeconds;</span><br><span class="line">long end = start + 86400L;</span><br></pre></td></tr></table></figure></p>
+<h3 id="jvm相关"><a href="#jvm相关" class="headerlink" title="jvm相关"></a>jvm相关</h3><p>整个堆大小=年轻代大小 + 年老代大小 + 持久代大小.</p>
 <p>-Xms 初始堆大小<br>-Xmx 最大堆大小<br>-Xmn 年轻代大小(1.4or lator)</p>
 <h3 id="四种引用"><a href="#四种引用" class="headerlink" title="四种引用"></a>四种引用</h3><p>强引用<br>软引用<br>弱引用<br>虚引用</p>
 <h2 id="go"><a href="#go" class="headerlink" title="go"></a>go</h2><h3 id="slice-排序"><a href="#slice-排序" class="headerlink" title="slice 排序"></a>slice 排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;sort&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    a := []int&#123;3, 5, 4, -1, 9, 11, -14&#125;</span><br><span class="line">    sort.Ints(a)</span><br><span class="line">    fmt.Println(a)</span><br><span class="line">    </span><br><span class="line">    ss := []string&#123;&quot;surface&quot;, &quot;ipad&quot;, &quot;mac pro&quot;, &quot;mac air&quot;, &quot;think pad&quot;, &quot;idea pad&quot;&#125;</span><br><span class="line">    sort.Strings(ss)</span><br><span class="line">    fmt.Println(ss)</span><br><span class="line">    sort.Sort(sort.Reverse(sort.StringSlice(ss)))</span><br><span class="line">    fmt.Printf(&quot;After reverse: %v\n&quot;, ss)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="prometheus-client"><a href="#prometheus-client" class="headerlink" title="prometheus client"></a>prometheus client</h2><p>queryDuration = prometheus.NewHistogram(prometheus.HistogramOpts{<br>        Namespace: namespace,<br>        Subsystem: subsystem,<br>        Name: “response_time”,<br>        Help: “query duration”,<br>    })<br>默认的分布是这样的,<br>vesta_query_response_time_bucket{le=”0.005”} 0<br>vesta_query_response_time_bucket{le=”0.01”} 0<br>vesta_query_response_time_bucket{le=”0.025”} 0<br>vesta_query_response_time_bucket{le=”0.05”} 0<br>vesta_query_response_time_bucket{le=”0.1”} 0<br>vesta_query_response_time_bucket{le=”0.25”} 1<br>vesta_query_response_time_bucket{le=”0.5”} 1<br>vesta_query_response_time_bucket{le=”1”} 1<br>vesta_query_response_time_bucket{le=”2.5”} 1<br>vesta_query_response_time_bucket{le=”5”} 1<br>vesta_query_response_time_bucket{le=”10”} 1<br>vesta_query_response_time_bucket{le=”+Inf”} 1</p>
+<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 生成并部署</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
