@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>go-flags | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在编写go项目的Makefile时,看到可以通过链接选项来传入信息   123456789101112GITHASH := $(shell git rev-parse --short HEAD)LDFLAGS += -X &quot;main.ReleaseVersion=$(shell git tag  --contains)&quot;LDFLAGS += -X &quot;main.BuildTS=$(shell dat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go-flags">
+<meta property="og:url" content="http://textworld.github.io/2019/05/07/go-flags/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在编写go项目的Makefile时,看到可以通过链接选项来传入信息   123456789101112GITHASH := $(shell git rev-parse --short HEAD)LDFLAGS += -X &quot;main.ReleaseVersion=$(shell git tag  --contains)&quot;LDFLAGS += -X &quot;main.BuildTS=$(shell dat">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-07T11:48:23.608Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="go-flags">
+<meta name="twitter:description" content="在编写go项目的Makefile时,看到可以通过链接选项来传入信息   123456789101112GITHASH := $(shell git rev-parse --short HEAD)LDFLAGS += -X &quot;main.ReleaseVersion=$(shell git tag  --contains)&quot;LDFLAGS += -X &quot;main.BuildTS=$(shell dat">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://textworld.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-go-flags" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/07/go-flags/" class="article-date">
+  <time datetime="2019-05-07T11:26:20.000Z" itemprop="datePublished">2019-05-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      go-flags
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在编写go项目的Makefile时,看到可以通过链接选项来传入信息  </p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">GITHASH := <span class="variable">$(<span class="built_in">shell</span> git rev-parse --short HEAD)</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.ReleaseVersion=$(shell git tag  --contains)"</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.BuildTS=$(shell date -u '+%Y-%m-%d %I:%M:%S')"</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.GitHash=<span class="variable">$(GITHASH)</span>"</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.GolangVersion=$(shell go version)"</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.GitLog=$(shell git log --abbrev-commit --oneline -n 1 | sed 's/<span class="variable">$(GITHASH)</span>//g')"</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.GitBranch=$(shell git rev-parse --abbrev-ref HEAD)"</span></span><br><span class="line"></span><br><span class="line"><span class="section">all: build</span></span><br><span class="line"></span><br><span class="line"><span class="section">build:</span></span><br><span class="line">	go build -ldflags '<span class="variable">$(LDFLAGS)</span>'</span><br></pre></td></tr></table></figure>
+<p>通过<code>-X importpath.name=value</code>方式可以将在包路径为<code>importpath</code>中,名为<code>name</code>的字符串变量设置成值<code>value</code>. 但这当变量在源代码中未被初始化或者初始化为一个字符串字面量时才有效.   </p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	BuildTS = <span class="string">""</span></span><br><span class="line">	GolangVersion <span class="keyword">string</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    fmt.Println(<span class="string">"BuildTS: "</span> + BuildTS) <span class="comment">//将会打印build的时间</span></span><br><span class="line">	fmt.Println(<span class="string">"GolangVersion: "</span> + GolangVersion) <span class="comment">//将会打印使用的golang版本</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考文献:</p>
+<ol>
+<li><a href="https://golang.org/cmd/link/" target="_blank" rel="noopener">https://golang.org/cmd/link/</a></li>
+<li><a href="https://ms2008.github.io/2018/10/08/golang-build-version/" target="_blank" rel="noopener">https://ms2008.github.io/2018/10/08/golang-build-version/</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://textworld.github.io/2019/05/07/go-flags/" data-id="cjvdqd3n300011p92yhwzgxtk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/07/go-range/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">go_range</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/05/07/go-flags/">go-flags</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/07/go-range/">go_range</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/12/flink/">各类关键数据格式读取/SQL支持</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/11/about-maven/">关于Maven的一些事情</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/24/raspberry/">raspberry</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 textworld<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
