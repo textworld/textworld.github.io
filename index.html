@@ -62,6 +62,155 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-go-range" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/07/go-range/" class="article-date">
+  <time datetime="2019-04-07T08:03:30.000Z" itemprop="datePublished">2019-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/07/go-range/">go_range</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一行代码了解range的原理</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line"><span class="string">"log"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  &#123;</span><br><span class="line">    names := []<span class="keyword">string</span>&#123;<span class="string">"John"</span>, <span class="string">"James"</span>, <span class="string">"Fat"</span>, <span class="string">"Cat"</span>&#125;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">var</span> name <span class="keyword">string</span></span><br><span class="line">	<span class="keyword">var</span> i <span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> i, name = <span class="keyword">range</span> names &#123;</span><br><span class="line">		log.Printf(<span class="string">"Range: n:%v, point of n: %p, point of name[i]:%p"</span>, name, &amp;name, &amp;(names[i]))</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2019/04/07 16:14:15 Range: n:John, point of n: 0xc00000e1e0, point of name[i]:0xc0000460c0</span><br><span class="line">2019/04/07 16:14:15 Range: n:James, point of n: 0xc00000e1e0, point of name[i]:0xc0000460d0</span><br><span class="line">2019/04/07 16:14:15 Range: n:Fat, point of n: 0xc00000e1e0, point of name[i]:0xc0000460e0</span><br><span class="line">2019/04/07 16:14:15 Range: n:Cat, point of n: 0xc00000e1e0, point of name[i]:0xc0000460f0</span><br></pre></td></tr></table></figure></p>
+<p>相信这段代码非常好理解, 每次循环时, 都将值赋给变量i和name, 打印name的内存地址自然不会改变, 下面稍微改动下代码</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"log"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  &#123;</span><br><span class="line">    name := []<span class="keyword">string</span>&#123;<span class="string">"John"</span>, <span class="string">"James"</span>, <span class="string">"Fat"</span>, <span class="string">"Cat"</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, n := <span class="keyword">range</span> name &#123;</span><br><span class="line">        log.Printf(<span class="string">"Range: n:%v, point of n: %p, point of name[i]:%p"</span>, n, &amp;n, &amp;(name[i]))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果如下  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2019/04/07 16:05:44 Range: n:John, point of n: 0xc00000e1e0, point of name[i]:0xc0000460c0</span><br><span class="line">2019/04/07 16:05:44 Range: n:James, point of n: 0xc00000e1e0, point of name[i]:0xc0000460d0</span><br><span class="line">2019/04/07 16:05:44 Range: n:Fat, point of n: 0xc00000e1e0, point of name[i]:0xc0000460e0</span><br><span class="line">2019/04/07 16:05:44 Range: n:Cat, point of n: 0xc00000e1e0, point of name[i]:0xc0000460f0</span><br></pre></td></tr></table></figure>
+<p>从打印的结果中可以看出, 其实打印出来的结果和上面的一样的(虽然内存地址不一样), n这个变量始终指向了同一个内存地址, 也就是说, range的作用就是遍历数据, 然后将遍历到的值都赋给n.  这句话说明了这个现象  </p>
+<blockquote>
+<p>If you use the short variable declaration style assignment (:=), Go will reuse the variables for each iteration of the loop (only in scope inside the loop).</p>
+</blockquote>
+<p>大概翻译成中文意思是: 使用了:=这种形式, 在每次循环中, 这个变量还是会被重用, 所以上面两个实验的结果其实是一样的, 这样的好处就是不用反复申请新的内存地址  </p>
+<h2 id="range-for-map"><a href="#range-for-map" class="headerlink" title="range for map"></a>range for map</h2><blockquote>
+<p>If map entries that have not yet been reached are removed during iteration, the corresponding iteration values will not be produced. If map entries are created during iteration, that entry may be produced during the iteration or may be skipped.</p>
+</blockquote>
+<p>这里只提到了在循环中,删除未遍历到的entry, 则被删除的值将不会被遍历到. 对于增加, 则有可能会被遍历到,也有可能不会. 至于这条是不是适用于数组, 那就不清楚了.</p>
+<h2 id="range需要知道的几点"><a href="#range需要知道的几点" class="headerlink" title="range需要知道的几点"></a>range需要知道的几点</h2><h3 id="range是在一个拷贝的副本上进行的"><a href="#range是在一个拷贝的副本上进行的" class="headerlink" title="range是在一个拷贝的副本上进行的"></a>range是在一个拷贝的副本上进行的</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IndexValueArray</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i, v := <span class="keyword">range</span> a &#123;</span><br><span class="line">		a[<span class="number">3</span>] = <span class="number">100</span></span><br><span class="line">		<span class="keyword">if</span> i == <span class="number">3</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">"IndexValueArray"</span>, i, v)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="comment">// IndexValueArray 3 4</span></span><br></pre></td></tr></table></figure>
+<p>如果确实想要改变, 可以这么改</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IndexValueArrayPtr</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i, v := <span class="keyword">range</span> &amp;a &#123;</span><br><span class="line">		a[<span class="number">3</span>] = <span class="number">100</span></span><br><span class="line">		<span class="keyword">if</span> i == <span class="number">3</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">"IndexValueArrayPtr"</span>, i, v)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="comment">// IndexValueArrayPtr 3 100</span></span><br></pre></td></tr></table></figure>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ol>
+<li><a href="https://garbagecollected.org/2017/02/22/go-range-loop-internals/" target="_blank" rel="noopener">https://garbagecollected.org/2017/02/22/go-range-loop-internals/</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://textworld.github.io/2019/04/07/go-range/" data-id="cjvdpebcf0000ij92nrn1qemi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-flink" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/12/flink/" class="article-date">
+  <time datetime="2019-03-12T13:18:56.000Z" itemprop="datePublished">2019-03-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/12/flink/">各类关键数据格式读取/SQL支持</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="https://blog.csdn.net/rongyongfeikai2/article/details/83656715" target="_blank" rel="noopener">Apache Flink 各类关键数据格式读取/SQL支持</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://textworld.github.io/2019/03/12/flink/" data-id="cjvdpebck0001ij92qd5lq3rw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-about-maven" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/11/about-maven/" class="article-date">
+  <time datetime="2019-03-11T12:19:06.000Z" itemprop="datePublished">2019-03-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/11/about-maven/">关于Maven的一些事情</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="About-maven"><a href="#About-maven" class="headerlink" title="About-maven"></a>About-maven</h1><h2 id="默认打包方式"><a href="#默认打包方式" class="headerlink" title="默认打包方式"></a>默认打包方式</h2><p>普通的jar包只包含工程源码编译出的class文件以及资源文件，而不包含任何依赖；同时还包括pom文件，说明该包的依赖信息;在工程pom文件下这样写，可生成普通的jar包(不写也行,默认就是这样):</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;<span class="name">packaging</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>项目结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> ~/mvntest  tree</span><br><span class="line">src</span><br><span class="line">├── mvntest.iml</span><br><span class="line">├── pom.xml</span><br><span class="line">├── main</span><br><span class="line">│   ├── java</span><br><span class="line">│   │   └── com</span><br><span class="line">│   │       └── github</span><br><span class="line">│   │           └── textworld</span><br><span class="line">│   │               └── mvntest</span><br><span class="line">│   │                   └── AppMain.java</span><br><span class="line">│   └── resources</span><br><span class="line">└── test</span><br><span class="line">    └── java</span><br></pre></td></tr></table></figure></p>
+<p>打包的jar包解压缩后的目录结构  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">~/mvntest/target/mvn-test-1.0-SNAPSHOT  tree</span><br><span class="line">.</span><br><span class="line">├── META-INF</span><br><span class="line">│   ├── MANIFEST.MF</span><br><span class="line">│   └── maven</span><br><span class="line">│       └── com.github.textworld</span><br><span class="line">│           └── mvn-test</span><br><span class="line">│               ├── pom.properties</span><br><span class="line">│               └── pom.xml</span><br><span class="line">└── com</span><br><span class="line">    └── github</span><br><span class="line">        └── textworld</span><br><span class="line">            └── mvntest</span><br><span class="line">                └── AppMain.class</span><br></pre></td></tr></table></figure>
+<h2 id="二方包打包"><a href="#二方包打包" class="headerlink" title="二方包打包"></a>二方包打包</h2><p>这里的打包是将这个项目打包成一个模板. 利用maven-archetype-plugin插件, 在target目录下生成为archetype, 然后再target目录下进行install进行部署.<br>在pom.xml中添加插件  </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-archetype-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>运行create命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:create-from-project</span><br></pre></td></tr></table></figure>
+<p>进入到generated-sourced/archetype目录<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── annotations</span><br><span class="line">└── archetype</span><br><span class="line">    ├── pom.xml</span><br><span class="line">    ├── src</span><br><span class="line">    │   ├── main</span><br><span class="line">    │   │   └── resources</span><br><span class="line">    │   │       ├── META-INF</span><br><span class="line">    │   │       │   └── maven</span><br><span class="line">    │   │       │       └── archetype-metadata.xml</span><br><span class="line">    │   │       └── archetype-resources</span><br><span class="line">    │   │           ├── dependency-reduced-pom.xml</span><br><span class="line">    │   │           ├── mvn-test.iml</span><br><span class="line">    │   │           ├── mvntest.iml</span><br><span class="line">    │   │           ├── pom.xml</span><br><span class="line">    │   │           └── src</span><br><span class="line">    │   │               └── main</span><br><span class="line">    │   │                   └── java</span><br><span class="line">    │   │                       └── AppMain.java</span><br><span class="line">    │   └── test</span><br><span class="line">    │       └── resources</span><br><span class="line">    │           └── projects</span><br><span class="line">    │               └── basic</span><br><span class="line">    │                   ├── archetype.properties</span><br><span class="line">    │                   └── goal.txt</span><br><span class="line">    └── target</span><br><span class="line">        ├── classes</span><br><span class="line">        │   ├── META-INF</span><br><span class="line">        │   │   └── maven</span><br><span class="line">        │   │       └── archetype-metadata.xml</span><br><span class="line">        │   └── archetype-resources</span><br><span class="line">        │       ├── dependency-reduced-pom.xml</span><br><span class="line">        │       ├── mvn-test.iml</span><br><span class="line">        │       ├── mvntest.iml</span><br><span class="line">        │       ├── pom.xml</span><br><span class="line">        │       └── src</span><br><span class="line">        │           └── main</span><br><span class="line">        │               └── java</span><br><span class="line">        │                   └── AppMain.java</span><br><span class="line">        ├── mvn-test-archetype-1.0-SNAPSHOT.jar</span><br><span class="line">        └── test-classes</span><br><span class="line">            └── projects</span><br><span class="line">                └── basic</span><br><span class="line">                    ├── archetype.properties</span><br><span class="line">                    └── goal.txt</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd target/generated-sources/archetype</span><br><span class="line">mvn install # 安装到本地</span><br></pre></td></tr></table></figure>
+<h2 id="部署到maven服务器"><a href="#部署到maven服务器" class="headerlink" title="部署到maven服务器"></a>部署到maven服务器</h2><p>修改pom.xml文件,添加如下内容</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">distributionManagement</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">name</span>&gt;</span>nexus Releases<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://...<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">snapshotRepository</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">name</span>&gt;</span>nexus Snapshots<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://...<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">snapshotRepository</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">distributionManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>运行maven命令：  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn deploy</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://textworld.github.io/2019/03/11/about-maven/" data-id="cjvdpebco0003ij92hbgrkjy1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/maven/">maven</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-raspberry" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/02/24/raspberry/" class="article-date">
@@ -84,7 +233,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="raspberry"><a href="#raspberry" class="headerlink" title="raspberry"></a>raspberry</h1><p>本文主要记录了玩树莓派过程中的一些操作. 其实操作也都很简单,只是网上查到的资料不是特别准确,所以自己动手记录下.  </p>
+        <p>本文主要记录了玩树莓派过程中的一些操作. 其实操作也都很简单,只是网上查到的资料不是特别准确,所以自己动手记录下.  </p>
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>树莓派型号: model 3b<br>系统版本: 2018-11-13-raspbian-stretch-lite  </p>
 <h2 id="第一步-修改默认密码"><a href="#第一步-修改默认密码" class="headerlink" title="第一步 修改默认密码"></a>第一步 修改默认密码</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pi@hostname: passwd</span><br></pre></td></tr></table></figure>
 <h2 id="第二步-修改键盘布局"><a href="#第二步-修改键盘布局" class="headerlink" title="第二步: 修改键盘布局"></a>第二步: 修改键盘布局</h2><p>因为树莓派来自于英国,默认的键盘布局是English(UK),改为English(US)  </p>
@@ -102,11 +251,16 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable ssh</span><br></pre></td></tr></table></figure>
 <h2 id="第六步-设置ddns-设置dmz"><a href="#第六步-设置ddns-设置dmz" class="headerlink" title="第六步: 设置ddns, 设置dmz"></a>第六步: 设置ddns, 设置dmz</h2><p>将树莓派暴露在公网  </p>
 <h2 id="第七部-更换源"><a href="#第七部-更换源" class="headerlink" title="第七部: 更换源"></a>第七部: 更换源</h2><p><a href="https://mirror.tuna.tsinghua.edu.cn/help/raspbian/" target="_blank" rel="noopener">https://mirror.tuna.tsinghua.edu.cn/help/raspbian/</a></p>
+<p>sudo apt-get install postgresql postgresql-contrib &amp;&amp; sudo service postgresql start</p>
+<h2 id="第八步"><a href="#第八步" class="headerlink" title="第八步"></a>第八步</h2><p>如果是桌面版本的话,默认进入shell</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo raspi-config</span><br></pre></td></tr></table></figure>
+<h2 id="thingsboard"><a href="#thingsboard" class="headerlink" title="thingsboard"></a>thingsboard</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psql -U postgres -d postgres -h 127.0.0.1 -W</span><br></pre></td></tr></table></figure>
 <h2 id="mosquitt"><a href="#mosquitt" class="headerlink" title="mosquitt"></a>mosquitt</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mosquitto mosquitto-clients python-mosquitto</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/02/24/raspberry/" data-id="cjt3xxj6j0000ns92h2z0xasw" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/02/24/raspberry/" data-id="cjvdpebcm0002ij927pmo5id8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -126,15 +280,29 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/">maven</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
     </div>
   </div>
 
@@ -145,6 +313,18 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/04/07/go-range/">go_range</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/12/flink/">各类关键数据格式读取/SQL支持</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/11/about-maven/">关于Maven的一些事情</a>
+          </li>
         
           <li>
             <a href="/2019/02/24/raspberry/">raspberry</a>
