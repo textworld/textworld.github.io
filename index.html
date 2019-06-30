@@ -62,6 +62,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/30/hexo/" class="article-date">
+  <time datetime="2019-06-30T03:24:24.000Z" itemprop="datePublished">2019-06-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/30/hexo/">hexo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="航行日志"><a href="#航行日志" class="headerlink" title="航行日志"></a>航行日志</h1><ol>
+<li>2019-06-30 首页的文章摘要显示</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://textworld.github.io/2019/06/30/hexo/" data-id="cjxiet4n40007al925pt4k6pj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/23/java/" class="article-date">
@@ -88,7 +127,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/06/23/java/" data-id="cjxhr3z2r0003vl927up4xz9h" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/06/23/java/" data-id="cjxiet4n30005al92zvc0s2gm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -127,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/06/18/learing-plan/" data-id="cjxhr3z2u0005vl92yd6lpaoe" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/06/18/learing-plan/" data-id="cjxiet4n50008al92ph71xqhg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,17 +203,16 @@
 <li>安装node_export</li>
 <li>安装prometheus</li>
 <li>安装grafana</li>
-<li>安装samba</li>
-</ol>
-<p>vim /etc/systemd/system/node_exporter.service</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=node_exporter</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=fork</span><br><span class="line">ExecStart=/usr/local/node_exporter/node_exporter</span><br><span class="line">Restart=on-failure</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-<p>sudo systemctl daemon-reload<br>sudo systemctl start node_exporter<br>systemctl status node_exporter<br>sudo systemctl enable node_exporter</p>
-<p>vim /etc/systemd/system/prometheus.service</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Prometheus Server</span><br><span class="line">Documentation=https://prometheus.io/docs/introduction/overview/</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=fork</span><br><span class="line">Restart=on-failure</span><br><span class="line">WorkingDirectory=/usr/local/prometheus-2.10.0.linux-amd64/</span><br><span class="line">ExecStart=/usr/local/prometheus-2.10.0.linux-amd64/prometheus \</span><br><span class="line">          --config.file=/usr/local/prometheus-2.10.0.linux-amd64/prometheus.yml</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<li>安装samba
+        
+          <p class="article-more-link">
+            <a href="/2019/06/02/myserver/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/06/02/myserver/" data-id="cjxhr3z2v0006vl92rdny16ed" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/06/02/myserver/" data-id="cjxiet4n60009al92suoetfs0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -206,66 +244,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>paxos算法用于解决分布式系统中的一致性问题. </p>
-<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1g4igw5rq5ij31c00u07wi.jpg" alt="p1"><br>paxos是一个投票决议的世界. 在这个世界中,一共有三种角色:Proposer,Acceptor,Learner. Proposer负责提出带有编号和值的提案. Acceptor负责接收提案. Learner负责学习提案.<br>提案决议的过程分为两个阶段:  </p>
-<ol>
-<li><p>PREPARE阶段</p>
-<ul>
-<li>提出PREPARE 请求<ul>
-<li>Proposer 提出一个只带编号的提案,不能带有值,只能有编号</li>
-<li>多个Proposer 提的编号不能相同.</li>
-<li>如果一个request超时,那么就用一个更大的id</li>
-</ul>
-</li>
-<li>Acceptor 接收到一个ID为P的PREPARE请求<ul>
-<li>是否答应忽略ID为P的PREPARE请求?<ul>
-<li>是,那就忽略</li>
-<li>否, 那就会保证忽略任何ID小于P的请求, 且是否曾经接受过提议?<ul>
-<li>是, 将之前的提议的值+ID P的Promise再传给Proposer</li>
-<li>否, 仅将ID P的Promise传给Proposer</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>ACCEPT阶段</p>
-<ul>
-<li>Proposer 接收到一个ID为P的Promise请求<ul>
-<li>是否接收超过半数的Promise请求<ul>
-<li>是, 那是否这个Promise带有Value<ul>
-<li>是,发送这个ID p以及Promise中的Value的ACCEPT-REQUEST给proposer</li>
-<li>否,任意选取一个Value,发送ID为P的ACCEPT-REQUEST给所有proposer</li>
-</ul>
-</li>
-<li>否, 忽略</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Acceptor接收到一个ID为P的ACCEPT-REQUEST, 是否保证忽略这个为P的ID(有可能答应过更大的ID)<ul>
-<li>是, 忽略</li>
-<li>否, 回复IDP和Value给所有的Leaners</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<p><br><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g4ihhuxryfj31c00u04qp.jpg" alt="p2"><br>争议的情况,两个Proposer产生了争议,可能导致整个过程无法进行下去. 解决办法是采用二进制退避算. 当Proposer2 收到Promise 8的时候, Promise 1会去等待一段时间,好让Proposer2 完成ACCEPT-REQUEST.</p>
-<p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g3ji1qb4s7j31c00u0qv5.jpg" alt="p5">  </p>
-<ol>
-<li>任何一个ID小于5的Request,都将不会被大多数者所接受</li>
-<li>任何一个ID大于5的但携带有不同值的Request,将不会被大多数者所接受, 因为被接受的值将会被piggyback回去. 及时learner没有及时接收到value, 就算发起一个新的请求, 返回的值也是之前已经达成一致的Value</li>
-</ol>
-<p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1g4ii1rle4cj31c00u0hdt.jpg" alt="p6"></p>
-<p>实际应用: 每一个log position都是一轮paxos协商过程</p>
-
+        <p>本文是看了<a href="https://www.youtube.com/watch?v=d7nAGI_NZPk&amp;t=143s" target="_blank" rel="noopener">视频</a>后,关键页面的笔记记录.<br>
+        
+          <p class="article-more-link">
+            <a href="/2019/05/30/paxos/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/05/30/paxos/" data-id="cjxhr3z2x0009vl92bcu6r92u" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/05/30/paxos/" data-id="cjxiet4nc000bal92bog3czm5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -297,20 +285,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在编写go项目的Makefile时,看到可以通过链接选项来传入信息  </p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">GITHASH := <span class="variable">$(<span class="built_in">shell</span> git rev-parse --short HEAD)</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.ReleaseVersion=$(shell git tag  --contains)"</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.BuildTS=$(shell date -u '+%Y-%m-%d %I:%M:%S')"</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.GitHash=<span class="variable">$(GITHASH)</span>"</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.GolangVersion=$(shell go version)"</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.GitLog=$(shell git log --abbrev-commit --oneline -n 1 | sed 's/<span class="variable">$(GITHASH)</span>//g')"</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.GitBranch=$(shell git rev-parse --abbrev-ref HEAD)"</span></span><br><span class="line"></span><br><span class="line"><span class="section">all: build</span></span><br><span class="line"></span><br><span class="line"><span class="section">build:</span></span><br><span class="line">	go build -ldflags '<span class="variable">$(LDFLAGS)</span>'</span><br></pre></td></tr></table></figure>
-<p>通过<code>-X importpath.name=value</code>方式可以将在包路径为<code>importpath</code>中,名为<code>name</code>的字符串变量设置成值<code>value</code>. 但这当变量在源代码中未被初始化或者初始化为一个字符串字面量时才有效.   </p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	BuildTS = <span class="string">""</span></span><br><span class="line">	GolangVersion <span class="keyword">string</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    fmt.Println(<span class="string">"BuildTS: "</span> + BuildTS) <span class="comment">//将会打印build的时间</span></span><br><span class="line">    fmt.Println(<span class="string">"GolangVersion: "</span> + GolangVersion) <span class="comment">//将会打印使用的golang版本</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>参考文献:</p>
-<ol>
-<li><a href="https://golang.org/cmd/link/" target="_blank" rel="noopener">https://golang.org/cmd/link/</a></li>
-<li><a href="https://ms2008.github.io/2018/10/08/golang-build-version/" target="_blank" rel="noopener">https://ms2008.github.io/2018/10/08/golang-build-version/</a></li>
-</ol>
-
+        <p>在编写go项目的Makefile时,看到可以通过链接选项来传入信息.<br>
+        
+          <p class="article-more-link">
+            <a href="/2019/05/07/go-flags/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/05/07/go-flags/" data-id="cjxhr3z2i0000vl929yvd69wd" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/05/07/go-flags/" data-id="cjxiet4n00003al923171encz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -343,32 +327,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>一行代码了解range的原理</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line"><span class="string">"log"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  &#123;</span><br><span class="line">    names := []<span class="keyword">string</span>&#123;<span class="string">"John"</span>, <span class="string">"James"</span>, <span class="string">"Fat"</span>, <span class="string">"Cat"</span>&#125;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">var</span> name <span class="keyword">string</span></span><br><span class="line">	<span class="keyword">var</span> i <span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> i, name = <span class="keyword">range</span> names &#123;</span><br><span class="line">		log.Printf(<span class="string">"Range: n:%v, point of n: %p, point of name[i]:%p"</span>, name, &amp;name, &amp;(names[i]))</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2019/04/07 16:14:15 Range: n:John, point of n: 0xc00000e1e0, point of name[i]:0xc0000460c0</span><br><span class="line">2019/04/07 16:14:15 Range: n:James, point of n: 0xc00000e1e0, point of name[i]:0xc0000460d0</span><br><span class="line">2019/04/07 16:14:15 Range: n:Fat, point of n: 0xc00000e1e0, point of name[i]:0xc0000460e0</span><br><span class="line">2019/04/07 16:14:15 Range: n:Cat, point of n: 0xc00000e1e0, point of name[i]:0xc0000460f0</span><br></pre></td></tr></table></figure></p>
-<p>相信这段代码非常好理解, 每次循环时, 都将值赋给变量i和name, 打印name的内存地址自然不会改变, 下面稍微改动下代码</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"log"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  &#123;</span><br><span class="line">    name := []<span class="keyword">string</span>&#123;<span class="string">"John"</span>, <span class="string">"James"</span>, <span class="string">"Fat"</span>, <span class="string">"Cat"</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, n := <span class="keyword">range</span> name &#123;</span><br><span class="line">        log.Printf(<span class="string">"Range: n:%v, point of n: %p, point of name[i]:%p"</span>, n, &amp;n, &amp;(name[i]))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出结果如下  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2019/04/07 16:05:44 Range: n:John, point of n: 0xc00000e1e0, point of name[i]:0xc0000460c0</span><br><span class="line">2019/04/07 16:05:44 Range: n:James, point of n: 0xc00000e1e0, point of name[i]:0xc0000460d0</span><br><span class="line">2019/04/07 16:05:44 Range: n:Fat, point of n: 0xc00000e1e0, point of name[i]:0xc0000460e0</span><br><span class="line">2019/04/07 16:05:44 Range: n:Cat, point of n: 0xc00000e1e0, point of name[i]:0xc0000460f0</span><br></pre></td></tr></table></figure>
-<p>从打印的结果中可以看出, 其实打印出来的结果和上面的一样的(虽然内存地址不一样), n这个变量始终指向了同一个内存地址, 也就是说, range的作用就是遍历数据, 然后将遍历到的值都赋给n.  这句话说明了这个现象  </p>
-<blockquote>
-<p>If you use the short variable declaration style assignment (:=), Go will reuse the variables for each iteration of the loop (only in scope inside the loop).</p>
-</blockquote>
-<p>大概翻译成中文意思是: 使用了:=这种形式, 在每次循环中, 这个变量还是会被重用, 所以上面两个实验的结果其实是一样的, 这样的好处就是不用反复申请新的内存地址  </p>
-<h2 id="range-for-map"><a href="#range-for-map" class="headerlink" title="range for map"></a>range for map</h2><blockquote>
-<p>If map entries that have not yet been reached are removed during iteration, the corresponding iteration values will not be produced. If map entries are created during iteration, that entry may be produced during the iteration or may be skipped.</p>
-</blockquote>
-<p>这里只提到了在循环中,删除未遍历到的entry, 则被删除的值将不会被遍历到. 对于增加, 则有可能会被遍历到,也有可能不会. 至于这条是不是适用于数组, 那就不清楚了.</p>
-<h2 id="range需要知道的几点"><a href="#range需要知道的几点" class="headerlink" title="range需要知道的几点"></a>range需要知道的几点</h2><h3 id="range是在一个拷贝的副本上进行的"><a href="#range是在一个拷贝的副本上进行的" class="headerlink" title="range是在一个拷贝的副本上进行的"></a>range是在一个拷贝的副本上进行的</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IndexValueArray</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i, v := <span class="keyword">range</span> a &#123;</span><br><span class="line">		a[<span class="number">3</span>] = <span class="number">100</span></span><br><span class="line">		<span class="keyword">if</span> i == <span class="number">3</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">"IndexValueArray"</span>, i, v)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line"><span class="comment">// IndexValueArray 3 4</span></span><br></pre></td></tr></table></figure>
-<p>如果确实想要改变, 可以这么改</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">IndexValueArrayPtr</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i, v := <span class="keyword">range</span> &amp;a &#123;</span><br><span class="line">		a[<span class="number">3</span>] = <span class="number">100</span></span><br><span class="line">		<span class="keyword">if</span> i == <span class="number">3</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">"IndexValueArrayPtr"</span>, i, v)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="comment">// IndexValueArrayPtr 3 100</span></span><br></pre></td></tr></table></figure>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ol>
-<li><a href="https://garbagecollected.org/2017/02/22/go-range-loop-internals/" target="_blank" rel="noopener">https://garbagecollected.org/2017/02/22/go-range-loop-internals/</a></li>
-</ol>
-
+        
+          <p class="article-more-link">
+            <a href="/2019/04/07/go-range/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/04/07/go-range/" data-id="cjxhr3z2w0007vl92wpu5fiqb" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/04/07/go-range/" data-id="cjxiet4n10004al92e5ugkbzu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -407,7 +374,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/03/12/flink/" data-id="cjxhr3z2m0001vl92uq8ijt86" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/03/12/flink/" data-id="cjxiet4mw0001al923pjlaa10" class="article-share-link">Share</a>
       
       
     </footer>
@@ -439,25 +406,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="About-maven"><a href="#About-maven" class="headerlink" title="About-maven"></a>About-maven</h1><h2 id="默认打包方式"><a href="#默认打包方式" class="headerlink" title="默认打包方式"></a>默认打包方式</h2><p>普通的jar包只包含工程源码编译出的class文件以及资源文件，而不包含任何依赖；同时还包括pom文件，说明该包的依赖信息;在工程pom文件下这样写，可生成普通的jar包(不写也行,默认就是这样):</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;<span class="name">packaging</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>项目结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> ~/mvntest  tree</span><br><span class="line">src</span><br><span class="line">├── mvntest.iml</span><br><span class="line">├── pom.xml</span><br><span class="line">├── main</span><br><span class="line">│   ├── java</span><br><span class="line">│   │   └── com</span><br><span class="line">│   │       └── github</span><br><span class="line">│   │           └── textworld</span><br><span class="line">│   │               └── mvntest</span><br><span class="line">│   │                   └── AppMain.java</span><br><span class="line">│   └── resources</span><br><span class="line">└── test</span><br><span class="line">    └── java</span><br></pre></td></tr></table></figure></p>
-<p>打包的jar包解压缩后的目录结构  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">~/mvntest/target/mvn-test-1.0-SNAPSHOT  tree</span><br><span class="line">.</span><br><span class="line">├── META-INF</span><br><span class="line">│   ├── MANIFEST.MF</span><br><span class="line">│   └── maven</span><br><span class="line">│       └── com.github.textworld</span><br><span class="line">│           └── mvn-test</span><br><span class="line">│               ├── pom.properties</span><br><span class="line">│               └── pom.xml</span><br><span class="line">└── com</span><br><span class="line">    └── github</span><br><span class="line">        └── textworld</span><br><span class="line">            └── mvntest</span><br><span class="line">                └── AppMain.class</span><br></pre></td></tr></table></figure>
-<h2 id="二方包打包"><a href="#二方包打包" class="headerlink" title="二方包打包"></a>二方包打包</h2><p>这里的打包是将这个项目打包成一个模板. 利用maven-archetype-plugin插件, 在target目录下生成为archetype, 然后再target目录下进行install进行部署.<br>在pom.xml中添加插件  </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-archetype-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>运行create命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:create-from-project</span><br></pre></td></tr></table></figure>
-<p>进入到generated-sourced/archetype目录<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── annotations</span><br><span class="line">└── archetype</span><br><span class="line">    ├── pom.xml</span><br><span class="line">    ├── src</span><br><span class="line">    │   ├── main</span><br><span class="line">    │   │   └── resources</span><br><span class="line">    │   │       ├── META-INF</span><br><span class="line">    │   │       │   └── maven</span><br><span class="line">    │   │       │       └── archetype-metadata.xml</span><br><span class="line">    │   │       └── archetype-resources</span><br><span class="line">    │   │           ├── dependency-reduced-pom.xml</span><br><span class="line">    │   │           ├── mvn-test.iml</span><br><span class="line">    │   │           ├── mvntest.iml</span><br><span class="line">    │   │           ├── pom.xml</span><br><span class="line">    │   │           └── src</span><br><span class="line">    │   │               └── main</span><br><span class="line">    │   │                   └── java</span><br><span class="line">    │   │                       └── AppMain.java</span><br><span class="line">    │   └── test</span><br><span class="line">    │       └── resources</span><br><span class="line">    │           └── projects</span><br><span class="line">    │               └── basic</span><br><span class="line">    │                   ├── archetype.properties</span><br><span class="line">    │                   └── goal.txt</span><br><span class="line">    └── target</span><br><span class="line">        ├── classes</span><br><span class="line">        │   ├── META-INF</span><br><span class="line">        │   │   └── maven</span><br><span class="line">        │   │       └── archetype-metadata.xml</span><br><span class="line">        │   └── archetype-resources</span><br><span class="line">        │       ├── dependency-reduced-pom.xml</span><br><span class="line">        │       ├── mvn-test.iml</span><br><span class="line">        │       ├── mvntest.iml</span><br><span class="line">        │       ├── pom.xml</span><br><span class="line">        │       └── src</span><br><span class="line">        │           └── main</span><br><span class="line">        │               └── java</span><br><span class="line">        │                   └── AppMain.java</span><br><span class="line">        ├── mvn-test-archetype-1.0-SNAPSHOT.jar</span><br><span class="line">        └── test-classes</span><br><span class="line">            └── projects</span><br><span class="line">                └── basic</span><br><span class="line">                    ├── archetype.properties</span><br><span class="line">                    └── goal.txt</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd target/generated-sources/archetype</span><br><span class="line">mvn install # 安装到本地</span><br></pre></td></tr></table></figure>
-<h2 id="部署到maven服务器"><a href="#部署到maven服务器" class="headerlink" title="部署到maven服务器"></a>部署到maven服务器</h2><p>修改pom.xml文件,添加如下内容</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">distributionManagement</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">name</span>&gt;</span>nexus Releases<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://...<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">snapshotRepository</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">name</span>&gt;</span>nexus Snapshots<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://...<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">snapshotRepository</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">distributionManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>运行maven命令：  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn deploy</span><br></pre></td></tr></table></figure>
+        <h1 id="About-maven"><a href="#About-maven" class="headerlink" title="About-maven"></a>About-maven</h1><p>本文记录了使用maven的过程<br>
+        
+          <p class="article-more-link">
+            <a href="/2019/03/11/about-maven/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/03/11/about-maven/" data-id="cjxhr3z2p0002vl923aiibvs3" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/03/11/about-maven/" data-id="cjxiet4ms0000al92qo69wgv4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/maven/">maven</a></li></ul>
@@ -492,34 +450,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>本文主要记录了玩树莓派过程中的一些操作. 其实操作也都很简单,只是网上查到的资料不是特别准确,所以自己动手记录下.  </p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>树莓派型号: model 3b<br>系统版本: 2018-11-13-raspbian-stretch-lite  </p>
-<h2 id="第一步-修改默认密码"><a href="#第一步-修改默认密码" class="headerlink" title="第一步 修改默认密码"></a>第一步 修改默认密码</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pi@hostname: passwd</span><br></pre></td></tr></table></figure>
-<h2 id="第二步-修改键盘布局"><a href="#第二步-修改键盘布局" class="headerlink" title="第二步: 修改键盘布局"></a>第二步: 修改键盘布局</h2><p>因为树莓派来自于英国,默认的键盘布局是English(UK),改为English(US)  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg-reconfigure keyboard-configuration</span><br><span class="line"><span class="meta">#</span> 101key -&gt; other -&gt; English(US) -&gt; English(US)</span><br></pre></td></tr></table></figure>
-<h2 id="第三步-wifi设置"><a href="#第三步-wifi设置" class="headerlink" title="第三步: wifi设置"></a>第三步: wifi设置</h2><p>官网的文档比较靠谱 <a href="https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md" target="_blank" rel="noopener">link</a>  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/wpa_supplicant/wpa_supplicant.conf</span><br></pre></td></tr></table></figure>
-<p>在配置的底部添加以下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">network=&#123;</span><br><span class="line">    ssid=&quot;testing&quot;</span><br><span class="line">    psk=&quot;testingPassword&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但实际上这样把wifi密码明文保存在这个文档中了,不是特别安全,建议使用wpa_passphrase来加密密码. 需要注意的是,如果直接写密码,则需要写双引号,如果写加密后的密码,则不需要双引号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">network=&#123;</span><br><span class="line">     ssid=&quot;testing&quot;</span><br><span class="line">     #psk=&quot;testingPassword&quot;</span><br><span class="line">     psk=131e1e221f6e06e3911a2d11ff2fac9182665c004de85300f9cac208a6a80531</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="第四步-iptables设置"><a href="#第四步-iptables设置" class="headerlink" title="第四步: iptables设置"></a>第四步: iptables设置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -P INPUT DROP</span><br><span class="line">sudo iptables -A INPUT -p tcp --dport 1022 -j ACCEPT</span><br><span class="line"><span class="meta">#</span> 查看iptables 规则</span><br><span class="line">sudo iptables -L</span><br><span class="line"><span class="meta">#</span> 将iptables 的规则保存导出到文件,仅仅是导出功能</span><br><span class="line">sudo iptables-save &gt; a.txt</span><br><span class="line"><span class="meta">#</span> 安装 iptables-persistent来持久化iptables配置</span><br><span class="line">sudo apt-get install iptables-persistent</span><br><span class="line"><span class="meta">#</span> 保存iptables 规则</span><br><span class="line">sudo netfilter-persistent save</span><br><span class="line"><span class="meta">#</span> 重载iptables 规则</span><br><span class="line">sudo netfilter-persistent reload</span><br></pre></td></tr></table></figure>
-<h2 id="第五步-修改-ssh"><a href="#第五步-修改-ssh" class="headerlink" title="第五步: 修改 ssh"></a>第五步: 修改 ssh</h2><p>修改两项  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PermitRootLogin no</span><br><span class="line">Port 1022</span><br></pre></td></tr></table></figure>
-<p>设置ssh自启动</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable ssh</span><br></pre></td></tr></table></figure>
-<h2 id="第六步-设置ddns-设置dmz"><a href="#第六步-设置ddns-设置dmz" class="headerlink" title="第六步: 设置ddns, 设置dmz"></a>第六步: 设置ddns, 设置dmz</h2><p>将树莓派暴露在公网  </p>
-<h2 id="第七部-更换源"><a href="#第七部-更换源" class="headerlink" title="第七部: 更换源"></a>第七部: 更换源</h2><p><a href="https://mirror.tuna.tsinghua.edu.cn/help/raspbian/" target="_blank" rel="noopener">https://mirror.tuna.tsinghua.edu.cn/help/raspbian/</a></p>
-<p>sudo apt-get install postgresql postgresql-contrib &amp;&amp; sudo service postgresql start</p>
-<h2 id="第八步"><a href="#第八步" class="headerlink" title="第八步"></a>第八步</h2><p>如果是桌面版本的话,默认进入shell</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo raspi-config</span><br></pre></td></tr></table></figure>
-<h2 id="thingsboard"><a href="#thingsboard" class="headerlink" title="thingsboard"></a>thingsboard</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psql -U postgres -d postgres -h 127.0.0.1 -W</span><br></pre></td></tr></table></figure>
-<h2 id="mosquitt"><a href="#mosquitt" class="headerlink" title="mosquitt"></a>mosquitt</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mosquitto mosquitto-clients python-mosquitto</span><br></pre></td></tr></table></figure>
-<h2 id="第九步"><a href="#第九步" class="headerlink" title="第九步"></a>第九步</h2><p>关机脚本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="comment"># author:ksc</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> RPi.GPIO <span class="keyword">as</span> GPIO</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> os,sys</span><br><span class="line"><span class="keyword">import</span> signal</span><br><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line">GPIO.setmode(GPIO.BCM)</span><br><span class="line"> </span><br><span class="line"><span class="comment">#define GPIO pin</span></span><br><span class="line">pin_btn=<span class="number">7</span></span><br><span class="line">pin_led=<span class="number">17</span></span><br><span class="line"> </span><br><span class="line">GPIO.setup(pin_btn, GPIO.IN, pull_up_down=GPIO.PUD_UP)</span><br><span class="line">GPIO.setup(pin_led, GPIO.OUT, initial=GPIO.PUD_UP)</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">status</span><span class="params">(Enum)</span>:</span></span><br><span class="line">    RUNNING = <span class="number">1</span></span><br><span class="line">    WAITING_DOWN = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">pi_status = status.RUNNING</span><br><span class="line"></span><br><span class="line">press_time=<span class="number">0</span></span><br><span class="line">count_down=<span class="number">10</span></span><br><span class="line">led_on=<span class="number">1</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cleanup</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''释放资源，不然下次运行是可能会收到警告</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    print(<span class="string">'clean up'</span>)</span><br><span class="line">    GPIO.cleanup()</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">handleSIGTERM</span><span class="params">(signum, frame)</span>:</span></span><br><span class="line">    cleanup()</span><br><span class="line">    sys.exit()<span class="comment">#raise an exception of type SystemExit</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">onPress</span><span class="params">(channel)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> press_time,count_down</span><br><span class="line">    print(<span class="string">'pressed'</span>)</span><br><span class="line">    <span class="keyword">if</span> pi_status == status.RUNNING :</span><br><span class="line">        pi_status = status.WAITING_DOWN</span><br><span class="line">    <span class="keyword">elif</span> pi_status == status.WAITING_DOWN:</span><br><span class="line">        pi_status = status.RUNNING</span><br><span class="line">    </span><br><span class="line">GPIO.add_event_detect(pin_btn, GPIO.FALLING, callback= onPress,bouncetime=<span class="number">500</span>)</span><br><span class="line"> </span><br><span class="line">signal.signal(signal.SIGTERM, handleSIGTERM)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        <span class="keyword">if</span> pi_status == status.WAITING_DOWN:</span><br><span class="line">            <span class="keyword">if</span> count_down == <span class="number">0</span>:</span><br><span class="line">                print(<span class="string">"start shutdown"</span>)</span><br><span class="line">                os.system(<span class="string">"shutdown  -h 5 now"</span>)</span><br><span class="line">                sys.exit()</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">"count_down: %d"</span> % count_down)</span><br><span class="line">                GPIO.output(pin_led, count_down % <span class="number">2</span>)</span><br><span class="line">                count_down -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> pi_status == status.RUNNING:</span><br><span class="line">            print(<span class="string">"RUNNING"</span>)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">except</span> KeyboardInterrupt:</span><br><span class="line">    print(<span class="string">'User press Ctrl+c ,exit;'</span>)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    cleanup()</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2019/02/24/raspberry/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/02/24/raspberry/" data-id="cjxhr3z31000avl922yvqis20" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/02/24/raspberry/" data-id="cjxiet4ne000dal92rysuefua" class="article-share-link">Share</a>
       
       
     </footer>
@@ -574,6 +513,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/30/hexo/">hexo</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/23/java/">java</a>
           </li>
         
@@ -587,10 +530,6 @@
         
           <li>
             <a href="/2019/05/30/paxos/">paxos</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/07/go-flags/">go-flags</a>
           </li>
         
       </ul>

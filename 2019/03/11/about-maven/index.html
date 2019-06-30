@@ -7,18 +7,18 @@
   
   <title>关于Maven的一些事情 | TEXT-WORLD</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="About-maven默认打包方式普通的jar包只包含工程源码编译出的class文件以及资源文件，而不包含任何依赖；同时还包括pom文件，说明该包的依赖信息;在工程pom文件下这样写，可生成普通的jar包(不写也行,默认就是这样): 1&amp;lt;packaging&amp;gt;jar&amp;lt;packaging&amp;gt; 项目结构1234567891011121314 ~/mvntest  treesrc├─">
+  <meta name="description" content="About-maven本文记录了使用maven的过程">
 <meta name="keywords" content="java,maven">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Maven的一些事情">
 <meta property="og:url" content="http://textworld.github.io/2019/03/11/about-maven/index.html">
 <meta property="og:site_name" content="TEXT-WORLD">
-<meta property="og:description" content="About-maven默认打包方式普通的jar包只包含工程源码编译出的class文件以及资源文件，而不包含任何依赖；同时还包括pom文件，说明该包的依赖信息;在工程pom文件下这样写，可生成普通的jar包(不写也行,默认就是这样): 1&amp;lt;packaging&amp;gt;jar&amp;lt;packaging&amp;gt; 项目结构1234567891011121314 ~/mvntest  treesrc├─">
+<meta property="og:description" content="About-maven本文记录了使用maven的过程">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-07T11:22:29.394Z">
+<meta property="og:updated_time" content="2019-06-30T03:37:55.841Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Maven的一些事情">
-<meta name="twitter:description" content="About-maven默认打包方式普通的jar包只包含工程源码编译出的class文件以及资源文件，而不包含任何依赖；同时还包括pom文件，说明该包的依赖信息;在工程pom文件下这样写，可生成普通的jar包(不写也行,默认就是这样): 1&amp;lt;packaging&amp;gt;jar&amp;lt;packaging&amp;gt; 项目结构1234567891011121314 ~/mvntest  treesrc├─">
+<meta name="twitter:description" content="About-maven本文记录了使用maven的过程">
   
     <link rel="alternate" href="/atom.xml" title="TEXT-WORLD" type="application/atom+xml">
   
@@ -87,7 +87,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="About-maven"><a href="#About-maven" class="headerlink" title="About-maven"></a>About-maven</h1><h2 id="默认打包方式"><a href="#默认打包方式" class="headerlink" title="默认打包方式"></a>默认打包方式</h2><p>普通的jar包只包含工程源码编译出的class文件以及资源文件，而不包含任何依赖；同时还包括pom文件，说明该包的依赖信息;在工程pom文件下这样写，可生成普通的jar包(不写也行,默认就是这样):</p>
+        <h1 id="About-maven"><a href="#About-maven" class="headerlink" title="About-maven"></a>About-maven</h1><p>本文记录了使用maven的过程<br><a id="more"></a></p>
+<h2 id="默认打包方式"><a href="#默认打包方式" class="headerlink" title="默认打包方式"></a>默认打包方式</h2><p>普通的jar包只包含工程源码编译出的class文件以及资源文件，而不包含任何依赖；同时还包括pom文件，说明该包的依赖信息;在工程pom文件下这样写，可生成普通的jar包(不写也行,默认就是这样):</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;<span class="name">packaging</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>项目结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> ~/mvntest  tree</span><br><span class="line">src</span><br><span class="line">├── mvntest.iml</span><br><span class="line">├── pom.xml</span><br><span class="line">├── main</span><br><span class="line">│   ├── java</span><br><span class="line">│   │   └── com</span><br><span class="line">│   │       └── github</span><br><span class="line">│   │           └── textworld</span><br><span class="line">│   │               └── mvntest</span><br><span class="line">│   │                   └── AppMain.java</span><br><span class="line">│   └── resources</span><br><span class="line">└── test</span><br><span class="line">    └── java</span><br></pre></td></tr></table></figure></p>
 <p>打包的jar包解压缩后的目录结构  </p>
@@ -105,7 +106,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/03/11/about-maven/" data-id="cjxhr3z2p0002vl923aiibvs3" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/03/11/about-maven/" data-id="cjxiet4ms0000al92qo69wgv4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/maven/">maven</a></li></ul>
@@ -179,6 +180,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/30/hexo/">hexo</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/23/java/">java</a>
           </li>
         
@@ -192,10 +197,6 @@
         
           <li>
             <a href="/2019/05/30/paxos/">paxos</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/07/go-flags/">go-flags</a>
           </li>
         
       </ul>

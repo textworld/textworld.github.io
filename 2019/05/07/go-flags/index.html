@@ -7,17 +7,17 @@
   
   <title>go-flags | TEXT-WORLD</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在编写go项目的Makefile时,看到可以通过链接选项来传入信息   123456789101112GITHASH := $(shell git rev-parse --short HEAD)LDFLAGS += -X &quot;main.ReleaseVersion=$(shell git tag  --contains)&quot;LDFLAGS += -X &quot;main.BuildTS=$(shell dat">
+  <meta name="description" content="在编写go项目的Makefile时,看到可以通过链接选项来传入信息.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="go-flags">
 <meta property="og:url" content="http://textworld.github.io/2019/05/07/go-flags/index.html">
 <meta property="og:site_name" content="TEXT-WORLD">
-<meta property="og:description" content="在编写go项目的Makefile时,看到可以通过链接选项来传入信息   123456789101112GITHASH := $(shell git rev-parse --short HEAD)LDFLAGS += -X &quot;main.ReleaseVersion=$(shell git tag  --contains)&quot;LDFLAGS += -X &quot;main.BuildTS=$(shell dat">
+<meta property="og:description" content="在编写go项目的Makefile时,看到可以通过链接选项来传入信息.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-08T02:12:15.912Z">
+<meta property="og:updated_time" content="2019-06-30T03:38:15.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go-flags">
-<meta name="twitter:description" content="在编写go项目的Makefile时,看到可以通过链接选项来传入信息   123456789101112GITHASH := $(shell git rev-parse --short HEAD)LDFLAGS += -X &quot;main.ReleaseVersion=$(shell git tag  --contains)&quot;LDFLAGS += -X &quot;main.BuildTS=$(shell dat">
+<meta name="twitter:description" content="在编写go项目的Makefile时,看到可以通过链接选项来传入信息.">
   
     <link rel="alternate" href="/atom.xml" title="TEXT-WORLD" type="application/atom+xml">
   
@@ -86,7 +86,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在编写go项目的Makefile时,看到可以通过链接选项来传入信息  </p>
+        <p>在编写go项目的Makefile时,看到可以通过链接选项来传入信息.<br><a id="more"></a></p>
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">GITHASH := <span class="variable">$(<span class="built_in">shell</span> git rev-parse --short HEAD)</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.ReleaseVersion=$(shell git tag  --contains)"</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.BuildTS=$(shell date -u '+%Y-%m-%d %I:%M:%S')"</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.GitHash=<span class="variable">$(GITHASH)</span>"</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.GolangVersion=$(shell go version)"</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.GitLog=$(shell git log --abbrev-commit --oneline -n 1 | sed 's/<span class="variable">$(GITHASH)</span>//g')"</span></span><br><span class="line">LDFLAGS += -X <span class="string">"main.GitBranch=$(shell git rev-parse --abbrev-ref HEAD)"</span></span><br><span class="line"></span><br><span class="line"><span class="section">all: build</span></span><br><span class="line"></span><br><span class="line"><span class="section">build:</span></span><br><span class="line">	go build -ldflags '<span class="variable">$(LDFLAGS)</span>'</span><br></pre></td></tr></table></figure>
 <p>通过<code>-X importpath.name=value</code>方式可以将在包路径为<code>importpath</code>中,名为<code>name</code>的字符串变量设置成值<code>value</code>. 但这当变量在源代码中未被初始化或者初始化为一个字符串字面量时才有效.   </p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	BuildTS = <span class="string">""</span></span><br><span class="line">	GolangVersion <span class="keyword">string</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    fmt.Println(<span class="string">"BuildTS: "</span> + BuildTS) <span class="comment">//将会打印build的时间</span></span><br><span class="line">    fmt.Println(<span class="string">"GolangVersion: "</span> + GolangVersion) <span class="comment">//将会打印使用的golang版本</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -99,7 +99,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/05/07/go-flags/" data-id="cjxhr3z2i0000vl929yvd69wd" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/05/07/go-flags/" data-id="cjxiet4n00003al923171encz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,6 +171,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/30/hexo/">hexo</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/23/java/">java</a>
           </li>
         
@@ -184,10 +188,6 @@
         
           <li>
             <a href="/2019/05/30/paxos/">paxos</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/07/go-flags/">go-flags</a>
           </li>
         
       </ul>
