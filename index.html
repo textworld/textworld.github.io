@@ -62,6 +62,129 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-command" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/22/command/" class="article-date">
+  <time datetime="2019-08-22T15:34:22.000Z" itemprop="datePublished">2019-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/22/command/">command</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="command"><a href="#command" class="headerlink" title="command"></a>command</h1><h2 id="curl"><a href="#curl" class="headerlink" title="curl"></a>curl</h2><h3 id="跟踪重定向"><a href="#跟踪重定向" class="headerlink" title="跟踪重定向"></a>跟踪重定向</h3><p>添加-L参数来跟踪URL重定向<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L itbilu.com</span><br></pre></td></tr></table></figure></p>
+<h3 id="页面保存"><a href="#页面保存" class="headerlink" title="页面保存"></a>页面保存</h3><p>如果需要将页面源码保存到本地，可以使用-o参数<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -o [文件名] itbilu.com</span><br></pre></td></tr></table></figure></p>
+<h3 id="查看头信息"><a href="#查看头信息" class="headerlink" title="查看头信息"></a>查看头信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -i itbilu.com</span><br></pre></td></tr></table></figure>
+<p>添加-i参数后，页面响应头会和页面源码（响应体）一块返回。如果只想查看响应头，可以使用-I或–head参数：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> curl -I itbilu.com</span><br><span class="line">HTTP/1.1 301 Moved Permanently</span><br><span class="line">Server: nginx/1.6.2</span><br><span class="line">Date: Sun, 25 Jun 2017 02:03:45 GMT</span><br><span class="line">Content-Type: text/html</span><br><span class="line">Content-Length: 184</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Location: https://itbilu.com/</span><br></pre></td></tr></table></figure></p>
+<h3 id="Cookie支持"><a href="#Cookie支持" class="headerlink" title="Cookie支持"></a>Cookie支持</h3><p>Cookie值可能会被服务器所返回的值所修改，并应用于下次HTTP请求。这时，可以能过-c参数指定存储服务器返回Cookie值的存储文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -b cookies.txt -c newcookies.txt itbilu.com</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://textworld.github.io/2019/08/22/command/" data-id="ck4se3lvc0000jt92wkx779ms" class="article-share-link">Share</a>
+      
+        <a href="http://textworld.github.io/2019/08/22/command/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-local-docker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/12/local-docker/" class="article-date">
+  <time datetime="2019-08-12T05:19:47.000Z" itemprop="datePublished">2019-08-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/12/local-docker/">local-docker</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 3306:3306  \</span><br><span class="line">--restart always \</span><br><span class="line">--privileged=true \</span><br><span class="line">--name mysql3306  \</span><br><span class="line">-e MYSQL_USER=&quot;textworld&quot; \</span><br><span class="line">-e MYSQL_PASSWORD=&quot;root#%mysql&quot; \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=&quot;root#%mysql&quot; \</span><br><span class="line">-v=/Users/textworld/OneDrive/data/mysql-3306/config/my.cnf:/etc/my.cnf  \</span><br><span class="line">-v=/Users/textworld/OneDrive/data/mysql-3306/data:/var/lib/mysql  \</span><br><span class="line">mysql:5.7.27</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">user=mysql</span><br><span class="line">character-set-server=utf8mb4</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">log-bin=/var/log/mysql/mysql-bin.index</span><br><span class="line">server-id=1</span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8mb4</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://textworld.github.io/2019/08/12/local-docker/" data-id="ck4se3lvy000ejt929bcbvwi0" class="article-share-link">Share</a>
+      
+        <a href="http://textworld.github.io/2019/08/12/local-docker/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-github项目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/24/github项目/" class="article-date">
+  <time datetime="2019-07-24T03:53:20.000Z" itemprop="datePublished">2019-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/24/github项目/">github项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>json编辑器<br>可以在vue中使用的json编辑器 <a href="https://github.com/yansenlei/VJsoneditor" target="_blank" rel="noopener">https://github.com/yansenlei/VJsoneditor</a><br><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g5asg4qu9ug30go097x6y.gif" alt="p1"></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://textworld.github.io/2019/07/24/github项目/" data-id="ck4se3lvi0002jt92qb8tyc7n" class="article-share-link">Share</a>
+      
+        <a href="http://textworld.github.io/2019/07/24/github项目/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/30/hexo/" class="article-date">
@@ -95,7 +218,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/06/30/hexo/" data-id="cjxo15lpo0002c092cxm9gvmd" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/06/30/hexo/" data-id="ck4se3lvs0008jt92fof48eqw" class="article-share-link">Share</a>
       
         <a href="http://textworld.github.io/2019/06/30/hexo/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -133,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/06/23/java/" data-id="cjxo15lpj0000c0921jge5n2p" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/06/23/java/" data-id="ck4se3lvu000ajt92n1ek5owj" class="article-share-link">Share</a>
       
         <a href="http://textworld.github.io/2019/06/23/java/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -174,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/06/18/learing-plan/" data-id="cjxo15lps0007c092800ye7co" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/06/18/learing-plan/" data-id="ck4se3lvx000cjt928wfixu4b" class="article-share-link">Share</a>
       
         <a href="http://textworld.github.io/2019/06/18/learing-plan/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -222,7 +345,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/06/02/myserver/" data-id="cjxo15lpr0005c092j0r0qsi8" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/06/02/myserver/" data-id="ck4se3lvv000bjt929wpwdzid" class="article-share-link">Share</a>
       
         <a href="http://textworld.github.io/2019/06/02/myserver/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -265,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/05/30/paxos/" data-id="cjxo15lqb000cc0921nckynky" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/05/30/paxos/" data-id="ck4se3lw0000gjt92olevfvdf" class="article-share-link">Share</a>
       
         <a href="http://textworld.github.io/2019/05/30/paxos/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -308,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/05/07/go-flags/" data-id="cjxo15lpq0004c092s0p2vk9v" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/05/07/go-flags/" data-id="ck4se3lvq0006jt92dh3fsm4w" class="article-share-link">Share</a>
       
         <a href="http://textworld.github.io/2019/05/07/go-flags/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -351,7 +474,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/04/07/go-range/" data-id="cjxo15lpp0003c092lgtaqzhr" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/04/07/go-range/" data-id="ck4se3lvr0007jt923s9qqndg" class="article-share-link">Share</a>
       
         <a href="http://textworld.github.io/2019/04/07/go-range/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -363,136 +486,12 @@
 
 
   
-    <article id="post-flink" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/12/flink/" class="article-date">
-  <time datetime="2019-03-12T13:18:56.000Z" itemprop="datePublished">2019-03-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/12/flink/">各类关键数据格式读取/SQL支持</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="流式处理"><a href="#流式处理" class="headerlink" title="流式处理"></a>流式处理</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
-<li><a href="https://blog.csdn.net/rongyongfeikai2/article/details/83656715" target="_blank" rel="noopener">Apache Flink 各类关键数据格式读取/SQL支持</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/03/12/flink/" data-id="cjxo15lpn0001c092q1hry8s5" class="article-share-link">Share</a>
-      
-        <a href="http://textworld.github.io/2019/03/12/flink/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
 
 
-  
-    <article id="post-about-maven" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/11/about-maven/" class="article-date">
-  <time datetime="2019-03-11T12:19:06.000Z" itemprop="datePublished">2019-03-11</time>
-</a>
+  <nav id="page-nav">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/11/about-maven/">关于Maven的一些事情</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="About-maven"><a href="#About-maven" class="headerlink" title="About-maven"></a>About-maven</h1><p>本文记录了使用maven的过程<br>
-        
-          <p class="article-more-link">
-            <a href="/2019/03/11/about-maven/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/03/11/about-maven/" data-id="cjxo15lps0006c092kjsuy061" class="article-share-link">Share</a>
-      
-        <a href="http://textworld.github.io/2019/03/11/about-maven/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/maven/">maven</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-raspberry" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/02/24/raspberry/" class="article-date">
-  <time datetime="2019-02-24T12:29:22.000Z" itemprop="datePublished">2019-02-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/24/raspberry/">raspberry</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文主要记录了玩树莓派过程中的一些操作. 其实操作也都很简单,只是网上查到的资料不是特别准确,所以自己动手记录下.  </p>
-        
-          <p class="article-more-link">
-            <a href="/2019/02/24/raspberry/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/02/24/raspberry/" data-id="cjxo15lqc000dc092crl8ct0k" class="article-share-link">Share</a>
-      
-        <a href="http://textworld.github.io/2019/02/24/raspberry/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -524,7 +523,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
     </div>
   </div>
 
@@ -537,23 +536,23 @@
       <ul>
         
           <li>
+            <a href="/2019/08/22/command/">command</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/12/local-docker/">local-docker</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/24/github项目/">github项目</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/30/hexo/">hexo</a>
           </li>
         
           <li>
             <a href="/2019/06/23/java/">java</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/18/learing-plan/">learing-plan</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/02/myserver/">myserver</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/30/paxos/">paxos</a>
           </li>
         
       </ul>
@@ -569,7 +568,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2019 textworld<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> <a href="http://www.miitbeian.gov.cn/">浙ICP备14008409号-2</a>
     </div>
   </div>
 </footer>

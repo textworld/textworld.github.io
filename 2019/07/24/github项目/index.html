@@ -5,24 +5,21 @@
   
 
   
-  <title>paxos | TEXT-WORLD</title>
+  <title>github项目 | TEXT-WORLD</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文是看了视频后,关键页面的笔记记录.">
+  <meta name="description" content="json编辑器可以在vue中使用的json编辑器 https://github.com/yansenlei/VJsoneditor">
 <meta property="og:type" content="article">
-<meta property="og:title" content="paxos">
-<meta property="og:url" content="http://textworld.github.io/2019/05/30/paxos/index.html">
+<meta property="og:title" content="github项目">
+<meta property="og:url" content="http://textworld.github.io/2019/07/24/github项目/index.html">
 <meta property="og:site_name" content="TEXT-WORLD">
-<meta property="og:description" content="本文是看了视频后,关键页面的笔记记录.">
+<meta property="og:description" content="json编辑器可以在vue中使用的json编辑器 https://github.com/yansenlei/VJsoneditor">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79ly1g4igw5rq5ij31c00u07wi.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1g4ihhuxryfj31c00u04qp.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1g3ji1qb4s7j31c00u0qv5.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1g4ii1rle4cj31c00u0hdt.jpg">
-<meta property="og:updated_time" content="2019-06-30T03:37:55.842Z">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1g5asg4qu9ug30go097x6y.gif">
+<meta property="og:updated_time" content="2019-07-24T03:55:43.651Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="paxos">
-<meta name="twitter:description" content="本文是看了视频后,关键页面的笔记记录.">
-<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/006tNc79ly1g4igw5rq5ij31c00u07wi.jpg">
+<meta name="twitter:title" content="github项目">
+<meta name="twitter:description" content="json编辑器可以在vue中使用的json编辑器 https://github.com/yansenlei/VJsoneditor">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1g5asg4qu9ug30go097x6y.gif">
   
     <link rel="alternate" href="/atom.xml" title="TEXT-WORLD" type="application/atom+xml">
   
@@ -69,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-paxos" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-github项目" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/05/30/paxos/" class="article-date">
-  <time datetime="2019-05-30T10:01:26.000Z" itemprop="datePublished">2019-05-30</time>
+    <a href="/2019/07/24/github项目/" class="article-date">
+  <time datetime="2019-07-24T03:53:20.000Z" itemprop="datePublished">2019-07-24</time>
 </a>
     
   </div>
@@ -83,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      paxos
+      github项目
     </h1>
   
 
@@ -91,69 +88,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文是看了<a href="https://www.youtube.com/watch?v=d7nAGI_NZPk&amp;t=143s" target="_blank" rel="noopener">视频</a>后,关键页面的笔记记录.<br><a id="more"></a></p>
-<p>paxos算法用于解决分布式系统中的一致性问题. </p>
-<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1g4igw5rq5ij31c00u07wi.jpg" alt="p1"><br>paxos是一个投票决议的世界. 在这个世界中,一共有三种角色:Proposer,Acceptor,Learner. Proposer负责提出带有编号和值的提案. Acceptor负责接收提案. Learner负责学习提案.<br>提案决议的过程分为两个阶段:  </p>
-<ol>
-<li><p>PREPARE阶段</p>
-<ul>
-<li>提出PREPARE 请求<ul>
-<li>Proposer 提出一个只带编号的提案,不能带有值,只能有编号</li>
-<li>多个Proposer 提的编号不能相同.</li>
-<li>如果一个request超时,那么就用一个更大的id</li>
-</ul>
-</li>
-<li>Acceptor 接收到一个ID为P的PREPARE请求<ul>
-<li>是否答应忽略ID为P的PREPARE请求?<ul>
-<li>是,那就忽略</li>
-<li>否, 那就会保证忽略任何ID小于P的请求, 且是否曾经接受过提议?<ul>
-<li>是, 将之前的提议的值+ID P的Promise再传给Proposer</li>
-<li>否, 仅将ID P的Promise传给Proposer</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>ACCEPT阶段</p>
-<ul>
-<li>Proposer 接收到一个ID为P的Promise请求<ul>
-<li>是否接收超过半数的Promise请求<ul>
-<li>是, 那是否这个Promise带有Value<ul>
-<li>是,发送这个ID p以及Promise中的Value的ACCEPT-REQUEST给proposer</li>
-<li>否,任意选取一个Value,发送ID为P的ACCEPT-REQUEST给所有proposer</li>
-</ul>
-</li>
-<li>否, 忽略</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Acceptor接收到一个ID为P的ACCEPT-REQUEST, 是否保证忽略这个为P的ID(有可能答应过更大的ID)<ul>
-<li>是, 忽略</li>
-<li>否, 回复IDP和Value给所有的Leaners</li>
-</ul>
-</li>
-</ul>
-</li>
+        <ol>
+<li>json编辑器<br>可以在vue中使用的json编辑器 <a href="https://github.com/yansenlei/VJsoneditor" target="_blank" rel="noopener">https://github.com/yansenlei/VJsoneditor</a><br><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g5asg4qu9ug30go097x6y.gif" alt="p1"></li>
 </ol>
-<p><br><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g4ihhuxryfj31c00u04qp.jpg" alt="p2"><br>争议的情况,两个Proposer产生了争议,可能导致整个过程无法进行下去. 解决办法是采用二进制退避算. 当Proposer2 收到Promise 8的时候, Promise 1会去等待一段时间,好让Proposer2 完成ACCEPT-REQUEST.</p>
-<p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g3ji1qb4s7j31c00u0qv5.jpg" alt="p5">  </p>
-<ol>
-<li>任何一个ID小于5的Request,都将不会被大多数者所接受</li>
-<li>任何一个ID大于5的但携带有不同值的Request,将不会被大多数者所接受, 因为被接受的值将会被piggyback回去. 及时learner没有及时接收到value, 就算发起一个新的请求, 返回的值也是之前已经达成一致的Value</li>
-</ol>
-<p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1g4ii1rle4cj31c00u0hdt.jpg" alt="p6"></p>
-<p>实际应用: 每一个log position都是一轮paxos协商过程</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/05/30/paxos/" data-id="ck4se3lw0000gjt92olevfvdf" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/07/24/github项目/" data-id="ck4se3lvi0002jt92qb8tyc7n" class="article-share-link">Share</a>
       
-        <a href="http://textworld.github.io/2019/05/30/paxos/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://textworld.github.io/2019/07/24/github项目/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -162,19 +106,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/06/02/myserver/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/12/local-docker/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          myserver
+          local-docker
         
       </div>
     </a>
   
   
-    <a href="/2019/05/07/go-flags/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/06/30/hexo/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">go-flags</div>
+      <div class="article-nav-title">hexo</div>
     </a>
   
 </nav>
@@ -279,7 +223,7 @@
 <script>
   var disqus_shortname = 'text-world';
   
-  var disqus_url = 'http://textworld.github.io/2019/05/30/paxos/';
+  var disqus_url = 'http://textworld.github.io/2019/07/24/github项目/';
   
   (function(){
     var dsq = document.createElement('script');

@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="TEXT-WORLD">
 <meta property="og:description" content="周末给闲置的ubuntu安装了一些基础监控和samba共享. 安装监控主要是  安装node_export 安装prometheus 安装grafana 安装samba">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-30T03:37:55.824Z">
+<meta property="og:updated_time" content="2019-08-15T08:26:37.495Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="myserver">
 <meta name="twitter:description" content="周末给闲置的ubuntu安装了一些基础监控和samba共享. 安装监控主要是  安装node_export 安装prometheus 安装grafana 安装samba">
@@ -99,10 +99,12 @@
 <p>sudo systemctl daemon-reload<br>sudo systemctl start node_exporter<br>systemctl status node_exporter<br>sudo systemctl enable node_exporter</p>
 <p>vim /etc/systemd/system/prometheus.service</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Prometheus Server</span><br><span class="line">Documentation=https://prometheus.io/docs/introduction/overview/</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=fork</span><br><span class="line">Restart=on-failure</span><br><span class="line">WorkingDirectory=/usr/local/prometheus-2.10.0.linux-amd64/</span><br><span class="line">ExecStart=/usr/local/prometheus-2.10.0.linux-amd64/prometheus \</span><br><span class="line">          --config.file=/usr/local/prometheus-2.10.0.linux-amd64/prometheus.yml</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>docker run -d -p 3306:3306  \<br>–restart always \<br>–privileged=true \<br>–name mysql3306  \<br>-e MYSQL_USER=”textworld” \<br>-e MYSQL_PASSWORD=”root#%mysql” \<br>-e MYSQL_ROOT_PASSWORD=”root#%mysql” \<br>-v=/Users/textworld/OneDrive/data/mysql-3306/config/my.cnf:/etc/my.cnf  \<br>-v=/Users/textworld/OneDrive/data/mysql-3306/data:/var/lib/mysql  \<br>mysql:5.7.27</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://textworld.github.io/2019/06/02/myserver/" data-id="cjxo15lpr0005c092j0r0qsi8" class="article-share-link">Share</a>
+      <a data-url="http://textworld.github.io/2019/06/02/myserver/" data-id="ck4se3lvv000bjt929wpwdzid" class="article-share-link">Share</a>
       
         <a href="http://textworld.github.io/2019/06/02/myserver/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -169,7 +171,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
     </div>
   </div>
 
@@ -182,23 +184,23 @@
       <ul>
         
           <li>
+            <a href="/2019/08/22/command/">command</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/12/local-docker/">local-docker</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/24/github项目/">github项目</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/30/hexo/">hexo</a>
           </li>
         
           <li>
             <a href="/2019/06/23/java/">java</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/18/learing-plan/">learing-plan</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/02/myserver/">myserver</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/30/paxos/">paxos</a>
           </li>
         
       </ul>
@@ -214,7 +216,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2019 textworld<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> <a href="http://www.miitbeian.gov.cn/">浙ICP备14008409号-2</a>
     </div>
   </div>
 </footer>
