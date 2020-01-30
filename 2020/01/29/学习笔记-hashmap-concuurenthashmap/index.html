@@ -4,19 +4,32 @@
 <head>
   <meta charset="utf-8">
   
-  <title>个人存储规划 | TEXT-WORLD</title>
+  <title>学习笔记-hashmap-concuurenthashmap | TEXT-WORLD</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="存储规划，规划了个人资料存储。">
+  <meta name="description" content="B站学习日记-互联网大厂面试常问的Hashmap和ConcurrentHashmap源码如何应对？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="个人存储规划">
-<meta property="og:url" content="http://textworld.github.io/2020/01/08/个人存储规划/index.html">
+<meta property="og:title" content="学习笔记-hashmap-concuurenthashmap">
+<meta property="og:url" content="http://textworld.github.io/2020/01/29/学习笔记-hashmap-concuurenthashmap/index.html">
 <meta property="og:site_name" content="TEXT-WORLD">
-<meta property="og:description" content="存储规划，规划了个人资料存储。">
+<meta property="og:description" content="B站学习日记-互联网大厂面试常问的Hashmap和ConcurrentHashmap源码如何应对？">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-30T02:42:04.840Z">
+<meta property="og:image" content="http://image.textworld.cn/20200130083934_VGG6zr_Screenshot.jpeg">
+<meta property="og:image" content="http://image.textworld.cn/20200130084325_u2M1C8_Screenshot.jpeg">
+<meta property="og:image" content="http://image.textworld.cn/20200129225123_daKmgI_QQ20200128-161821.jpeg">
+<meta property="og:image" content="http://image.textworld.cn/20200129225123_PqOFpY_QQ20200128-161451.jpeg">
+<meta property="og:image" content="http://image.textworld.cn/20200130084447_LUmMBd_Screenshot.jpeg">
+<meta property="og:image" content="http://image.textworld.cn/20200130084642_MmPPjt_Screenshot.jpeg">
+<meta property="og:image" content="http://image.textworld.cn/20200130084745_fhExJz_Screenshot.jpeg">
+<meta property="og:image" content="http://image.textworld.cn/20200129225124_hEWfQM_QQ20200128-155944.jpeg">
+<meta property="og:image" content="http://image.textworld.cn/20200129225124_9UnWLM_QQ20200128-155805.jpeg">
+<meta property="og:image" content="http://image.textworld.cn/20200129225124_4BuRhy_QQ20200128-155920.jpeg">
+<meta property="og:image" content="http://image.textworld.cn/20200129225123_OFCyYT_QQ20200128-170524.jpeg">
+<meta property="og:image" content="http://image.textworld.cn/20200129225123_ULeBA9_QQ20200128-162956.jpeg">
+<meta property="og:updated_time" content="2020-01-30T02:18:45.651Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="个人存储规划">
-<meta name="twitter:description" content="存储规划，规划了个人资料存储。">
+<meta name="twitter:title" content="学习笔记-hashmap-concuurenthashmap">
+<meta name="twitter:description" content="B站学习日记-互联网大厂面试常问的Hashmap和ConcurrentHashmap源码如何应对？">
+<meta name="twitter:image" content="http://image.textworld.cn/20200130083934_VGG6zr_Screenshot.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="TEXT-WORLD" type="application/atom+xml">
   
@@ -68,16 +81,12 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-个人存储规划" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-学习笔记-hashmap-concuurenthashmap" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/08/个人存储规划/" class="article-date">
-  <time datetime="2020-01-08T02:30:21.000Z" itemprop="datePublished">2020-01-08</time>
+    <a href="/2020/01/29/学习笔记-hashmap-concuurenthashmap/" class="article-date">
+  <time datetime="2020-01-29T12:29:22.000Z" itemprop="datePublished">2020-01-29</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/生活/">生活</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -86,7 +95,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      个人存储规划
+      学习笔记-hashmap-concuurenthashmap
     </h1>
   
 
@@ -94,34 +103,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>存储规划，规划了个人资料存储。<br><a id="more"></a></p>
-<h1 id="拥有的组件"><a href="#拥有的组件" class="headerlink" title="拥有的组件"></a>拥有的组件</h1><ol>
-<li>群辉NAS一台，单块4T硬盘（有计划再购入一块，组成raid 1）</li>
-<li>百度云（超级会员）</li>
-<li>OneDrive</li>
-</ol>
-<h1 id="大致规划"><a href="#大致规划" class="headerlink" title="大致规划"></a>大致规划</h1><h2 id="百度网盘"><a href="#百度网盘" class="headerlink" title="百度网盘"></a>百度网盘</h2><ul>
-<li>网络影视娱乐资源</li>
-<li>软件资源</li>
+        <p>B站学习日记-互联网大厂面试常问的Hashmap和ConcurrentHashmap源码如何应对？</p>
+<a id="more"></a>
+
+<div style="position: relative; width: 100%;">
+    <iframe src="//player.bilibili.com/player.html?aid=83437677&cid=142736641&page=6" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+</div>
+
+<p><img src="http://image.textworld.cn/20200130083934_VGG6zr_Screenshot.jpeg" alt="unsafe-cas"><br>⇡Unsafe，使用CAS</p>
+<p><img src="http://image.textworld.cn/20200130084325_u2M1C8_Screenshot.jpeg" alt="unsafe-get"><br>⇡获取Unsafe 对象</p>
+<p><img src="http://image.textworld.cn/20200129225123_daKmgI_QQ20200128-161821.jpeg" alt="unsafe必须手动求偏移量"></p>
+<p><img src="http://image.textworld.cn/20200129225123_PqOFpY_QQ20200128-161451.jpeg" alt="unsafe 求对象头的大小"></p>
+<p><img src="http://image.textworld.cn/20200130084447_LUmMBd_Screenshot.jpeg" alt="unsafe-compareAndSwapInt"><br>⇡什么类型，就用什么方法</p>
+<p><img src="http://image.textworld.cn/20200130084642_MmPPjt_Screenshot.jpeg" alt="concurrent-hashmap-结构"><br>⇡ConcurrentHashMap结构</p>
+<p><img src="http://image.textworld.cn/20200130084745_fhExJz_Screenshot.jpeg" alt="ConcurrentHashMap-构造函数"><br>⇡initialCapacity,loadFactor,concurrentLevel  </p>
+<ul>
+<li>initialCapacity 所有的hashentry的数组</li>
+<li>concurrentLevel segment的个数</li>
 </ul>
-<h2 id="NAS"><a href="#NAS" class="headerlink" title="NAS"></a>NAS</h2><ul>
-<li>个人文档，归档性质的，离线备份</li>
-<li>私人照片</li>
-<li>mac文件夹同步设备</li>
-</ul>
-<h2 id="Onedrive"><a href="#Onedrive" class="headerlink" title="Onedrive"></a>Onedrive</h2><ul>
-<li>个人文档，经常使用</li>
-</ul>
+<p>⇡sshift和ssize的计算，关键是求最小的大于等于concurrentLevel的2的幂次数，sshift表示的是幂，ssize代表的是结果。</p>
+<p><img src="http://image.textworld.cn/20200129225124_hEWfQM_QQ20200128-155944.jpeg" alt=""><br>⇡首先计算 hashcode属于哪个segment，通过高n位去hash，n的计算取决于concurrentLevel</p>
+<p><img src="http://image.textworld.cn/20200129225124_9UnWLM_QQ20200128-155805.jpeg" alt=""><br>⇡求最小的大于等于concurrentLevel的2的幂次数 算法</p>
+<p><img src="http://image.textworld.cn/20200129225124_4BuRhy_QQ20200128-155920.jpeg" alt=""><br>⇡ 计算每个segment中hashentry的数量，最小必须为2<br>⇡ 只初始化第一个segment，后面复制这个就行</p>
+<p><img src="http://image.textworld.cn/20200129225123_OFCyYT_QQ20200128-170524.jpeg" alt=""><br>⇡put的代码，多次判断是否为null，while+cas的组合</p>
+<p><img src="http://image.textworld.cn/20200129225123_ULeBA9_QQ20200128-162956.jpeg" alt=""><br>⇡高位加低位hash，组成分段锁</p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://textworld.github.io/2020/01/08/个人存储规划/" data-id="ck604oa5p0002rv92x9m1wxiw" class="article-share-link" data-share="baidu" data-title="个人存储规划">Share</a>
+        <a data-url="http://textworld.github.io/2020/01/29/学习笔记-hashmap-concuurenthashmap/" data-id="ck603zg0y0000rv92lk3w7mi2" class="article-share-link" data-share="baidu" data-title="学习笔记-hashmap-concuurenthashmap">Share</a>
       
 
       
-        <a href="http://textworld.github.io/2020/01/08/个人存储规划/#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://textworld.github.io/2020/01/29/学习笔记-hashmap-concuurenthashmap/#ds-thread" class="article-comment-link">Comments</a>
       
 
       
@@ -131,19 +146,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/01/29/学习笔记-hashmap-concuurenthashmap/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          学习笔记-hashmap-concuurenthashmap
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/12/docker使用记录/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/01/08/个人存储规划/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">docker使用记录</div>
+      <div class="article-nav-title">个人存储规划</div>
     </a>
   
 </nav>
@@ -153,7 +159,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2020/01/08/个人存储规划/" data-title="个人存储规划" data-url="http://textworld.github.io/2020/01/08/个人存储规划/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2020/01/29/学习笔记-hashmap-concuurenthashmap/" data-title="学习笔记-hashmap-concuurenthashmap" data-url="http://textworld.github.io/2020/01/29/学习笔记-hashmap-concuurenthashmap/"></div>
   </section>
 </section>
       

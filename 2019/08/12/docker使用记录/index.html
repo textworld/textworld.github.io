@@ -4,19 +4,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>个人存储规划 | TEXT-WORLD</title>
+  <title>docker使用记录 | TEXT-WORLD</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="存储规划，规划了个人资料存储。">
+  <meta name="description" content="本文记录了一些Docker使用过程中用到的配置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="个人存储规划">
-<meta property="og:url" content="http://textworld.github.io/2020/01/08/个人存储规划/index.html">
+<meta property="og:title" content="docker使用记录">
+<meta property="og:url" content="http://textworld.github.io/2019/08/12/docker使用记录/index.html">
 <meta property="og:site_name" content="TEXT-WORLD">
-<meta property="og:description" content="存储规划，规划了个人资料存储。">
+<meta property="og:description" content="本文记录了一些Docker使用过程中用到的配置">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2020-01-30T02:42:04.840Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="个人存储规划">
-<meta name="twitter:description" content="存储规划，规划了个人资料存储。">
+<meta name="twitter:title" content="docker使用记录">
+<meta name="twitter:description" content="本文记录了一些Docker使用过程中用到的配置">
   
     <link rel="alternative" href="/atom.xml" title="TEXT-WORLD" type="application/atom+xml">
   
@@ -68,16 +68,12 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-个人存储规划" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-docker使用记录" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/08/个人存储规划/" class="article-date">
-  <time datetime="2020-01-08T02:30:21.000Z" itemprop="datePublished">2020-01-08</time>
+    <a href="/2019/08/12/docker使用记录/" class="article-date">
+  <time datetime="2019-08-12T05:19:47.000Z" itemprop="datePublished">2019-08-12</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/生活/">生活</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -86,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      个人存储规划
+      docker使用记录
     </h1>
   
 
@@ -94,34 +90,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>存储规划，规划了个人资料存储。<br><a id="more"></a></p>
-<h1 id="拥有的组件"><a href="#拥有的组件" class="headerlink" title="拥有的组件"></a>拥有的组件</h1><ol>
-<li>群辉NAS一台，单块4T硬盘（有计划再购入一块，组成raid 1）</li>
-<li>百度云（超级会员）</li>
-<li>OneDrive</li>
-</ol>
-<h1 id="大致规划"><a href="#大致规划" class="headerlink" title="大致规划"></a>大致规划</h1><h2 id="百度网盘"><a href="#百度网盘" class="headerlink" title="百度网盘"></a>百度网盘</h2><ul>
-<li>网络影视娱乐资源</li>
-<li>软件资源</li>
-</ul>
-<h2 id="NAS"><a href="#NAS" class="headerlink" title="NAS"></a>NAS</h2><ul>
-<li>个人文档，归档性质的，离线备份</li>
-<li>私人照片</li>
-<li>mac文件夹同步设备</li>
-</ul>
-<h2 id="Onedrive"><a href="#Onedrive" class="headerlink" title="Onedrive"></a>Onedrive</h2><ul>
-<li>个人文档，经常使用</li>
-</ul>
-
+        <p>本文记录了一些Docker使用过程中用到的配置<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 3306:3306  \</span><br><span class="line">--restart always \</span><br><span class="line">--privileged=true \</span><br><span class="line">--name mysql3306  \</span><br><span class="line">-e MYSQL_USER=&quot;textworld&quot; \</span><br><span class="line">-e MYSQL_PASSWORD=&quot;root#%mysql&quot; \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=&quot;root#%mysql&quot; \</span><br><span class="line">-v=/Users/textworld/OneDrive/data/mysql-3306/config/my.cnf:/etc/my.cnf  \</span><br><span class="line">-v=/Users/textworld/OneDrive/data/mysql-3306/data:/var/lib/mysql  \</span><br><span class="line">mysql:5.7.27</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">user=mysql</span><br><span class="line">character-set-server=utf8mb4</span><br><span class="line">default_authentication_plugin=mysql_native_password</span><br><span class="line">log-bin=/var/log/mysql/mysql-bin.index</span><br><span class="line">server-id=1</span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8mb4</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://textworld.github.io/2020/01/08/个人存储规划/" data-id="ck604oa5p0002rv92x9m1wxiw" class="article-share-link" data-share="baidu" data-title="个人存储规划">Share</a>
+        <a data-url="http://textworld.github.io/2019/08/12/docker使用记录/" data-id="ck604uld00009rv9290fnlypp" class="article-share-link" data-share="baidu" data-title="docker使用记录">Share</a>
       
 
       
-        <a href="http://textworld.github.io/2020/01/08/个人存储规划/#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://textworld.github.io/2019/08/12/docker使用记录/#ds-thread" class="article-comment-link">Comments</a>
       
 
       
@@ -131,19 +110,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/01/29/学习笔记-hashmap-concuurenthashmap/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/01/08/个人存储规划/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          学习笔记-hashmap-concuurenthashmap
+          个人存储规划
         
       </div>
     </a>
   
   
-    <a href="/2019/08/12/docker使用记录/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/06/23/lombok-delegate/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">docker使用记录</div>
+      <div class="article-nav-title">lombok-Delegate</div>
     </a>
   
 </nav>
@@ -153,7 +132,7 @@
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2020/01/08/个人存储规划/" data-title="个人存储规划" data-url="http://textworld.github.io/2020/01/08/个人存储规划/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2019/08/12/docker使用记录/" data-title="docker使用记录" data-url="http://textworld.github.io/2019/08/12/docker使用记录/"></div>
   </section>
 </section>
       
