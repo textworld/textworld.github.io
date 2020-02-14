@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://image.textworld.cn/20200214210352_Jf7aGS_Screenshot.jpeg">
 <meta property="og:image" content="http://image.textworld.cn/20200214210626_M1InFF_Screenshot.jpeg">
 <meta property="og:image" content="http://image.textworld.cn/20200214210726_H4rIkU_Screenshot.jpeg">
-<meta property="og:updated_time" content="2020-02-14T13:27:49.814Z">
+<meta property="og:updated_time" content="2020-02-14T13:30:38.254Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Finite State Transducers">
 <meta name="twitter:description" content="本文主要介绍了Finite State Transducers, 中文名叫做有穷状态转换器。 我是在学习Elasticsearch内部工作原理的时候接触到的。">
@@ -205,7 +205,25 @@
 <blockquote>
 <p>实现共享状态的关键点是：每一个key,都在FST中对应一个唯一的路径。因此，对于任何一个特定的key，总会有一些value的转移组合使得路径是唯一的。我们需要做的就是如何来在转移中分配这些组合。 <a href="https://www.shenyanchao.cn/blog/2018/12/04/lucene-fst/" target="_blank" rel="noopener">https://www.shenyanchao.cn/blog/2018/12/04/lucene-fst/</a></p>
 </blockquote>
-<p>因为ES是倒排索引。假如有两个文档doc1,doc2,形成了一个倒排索引：<br>|  单词   | 文档ID  |<br>|  —-  | —-  |<br>| textworld  | doc1,doc2 |<br>| am | doc1 |</p>
+<p>因为ES是倒排索引。假如有两个文档doc1,doc2,形成了一个倒排索引：</p>
+<table>
+<thead>
+<tr>
+<th>单词</th>
+<th>文档ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>textworld</td>
+<td>doc1,doc2</td>
+</tr>
+<tr>
+<td>am</td>
+<td>doc1</td>
+</tr>
+</tbody>
+</table>
 <p>当查询单词textworld的时候，首先得确认这个单词在不在集合中，因此需要用到FST</p>
 
       
