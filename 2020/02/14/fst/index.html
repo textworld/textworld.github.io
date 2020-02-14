@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://textworld.github.io">
-  <title>fst | TEXT-WORLD</title>
+  <title>Finite State Transducers | TEXT-WORLD</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="本文主要介绍了Finite State Transducers, 中文名叫做有穷状态转换器。 我是在学习Elasticsearch内部工作原理的时候接触到的。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="fst">
+<meta property="og:title" content="Finite State Transducers">
 <meta property="og:url" content="http://textworld.github.io/2020/02/14/fst/index.html">
 <meta property="og:site_name" content="TEXT-WORLD">
 <meta property="og:description" content="本文主要介绍了Finite State Transducers, 中文名叫做有穷状态转换器。 我是在学习Elasticsearch内部工作原理的时候接触到的。">
@@ -19,9 +19,9 @@
 <meta property="og:image" content="http://image.textworld.cn/20200214210352_Jf7aGS_Screenshot.jpeg">
 <meta property="og:image" content="http://image.textworld.cn/20200214210626_M1InFF_Screenshot.jpeg">
 <meta property="og:image" content="http://image.textworld.cn/20200214210726_H4rIkU_Screenshot.jpeg">
-<meta property="og:updated_time" content="2020-02-14T13:07:53.204Z">
+<meta property="og:updated_time" content="2020-02-14T13:27:49.814Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="fst">
+<meta name="twitter:title" content="Finite State Transducers">
 <meta name="twitter:description" content="本文主要介绍了Finite State Transducers, 中文名叫做有穷状态转换器。 我是在学习Elasticsearch内部工作原理的时候接触到的。">
 <meta name="twitter:image" content="http://image.textworld.cn/20200214205923_53Lw5r_Screenshot.jpeg">
   
@@ -168,7 +168,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      fst
+      Finite State Transducers
     </h1>
   
 
@@ -183,7 +183,7 @@
       
         <p>本文主要介绍了Finite State Transducers, 中文名叫做有穷状态转换器。 我是在学习Elasticsearch内部工作原理的时候接触到的。</p>
 <a id="more"></a>
-<p>在了解FST之前，先来了解下Finite Automata，中文叫做有穷自动机。</p>
+<h2 id="了解FST"><a href="#了解FST" class="headerlink" title="了解FST"></a>了解FST</h2><p>在了解FST之前，先来了解下Finite Automata，中文叫做有穷自动机。</p>
 <p><img src="http://image.textworld.cn/20200214205923_53Lw5r_Screenshot.jpeg" alt=""></p>
 <p>有一点解释下，对于字符串001001, 是可以通过路径x0-&gt;x0-&gt;x1-&gt;x2，到达终点， 这样就可以停止了。</p>
 <hr>
@@ -194,7 +194,19 @@
 <p>FST中一个路径的写法  </p>
 <hr>
 <p><img src="http://image.textworld.cn/20200214210726_H4rIkU_Screenshot.jpeg" alt=""></p>
-<p>再加一个权重</p>
+<p>WFST, weighted finite state transducers, 就是在FST的state transition上增加了一个权重</p>
+<p>更多资料在视频出处：<a href="https://www.youtube.com/watch?v=Qrf5SYEQjL8" target="_blank" rel="noopener">https://www.youtube.com/watch?v=Qrf5SYEQjL8</a></p>
+<h2 id="FST与ES"><a href="#FST与ES" class="headerlink" title="FST与ES"></a>FST与ES</h2><blockquote>
+<p>FST在Lucene4.0以后的版本中用于快速定位所查单词在字典中的位置即FST&lt;IntsRef，byteSequence&gt;，由于Lucene是以二进制存储的，所以byteSecquence相当于一个数值，即用多个byte去表示一个数。 <a href="https://blog.csdn.net/fightingforcv/article/details/42709355" target="_blank" rel="noopener">https://blog.csdn.net/fightingforcv/article/details/42709355</a></p>
+</blockquote>
+<blockquote>
+<p>一个快速的(常量，或者1)定位词典的数据结构-FST <a href="https://www.shenyanchao.cn/blog/2018/12/04/lucene-fst/" target="_blank" rel="noopener">https://www.shenyanchao.cn/blog/2018/12/04/lucene-fst/</a></p>
+</blockquote>
+<blockquote>
+<p>实现共享状态的关键点是：每一个key,都在FST中对应一个唯一的路径。因此，对于任何一个特定的key，总会有一些value的转移组合使得路径是唯一的。我们需要做的就是如何来在转移中分配这些组合。 <a href="https://www.shenyanchao.cn/blog/2018/12/04/lucene-fst/" target="_blank" rel="noopener">https://www.shenyanchao.cn/blog/2018/12/04/lucene-fst/</a></p>
+</blockquote>
+<p>因为ES是倒排索引。假如有两个文档doc1,doc2,形成了一个倒排索引：<br>|  单词   | 文档ID  |<br>|  —-  | —-  |<br>| textworld  | doc1,doc2 |<br>| am | doc1 |</p>
+<p>当查询单词textworld的时候，首先得确认这个单词在不在集合中，因此需要用到FST</p>
 
       
 
